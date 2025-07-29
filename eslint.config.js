@@ -40,6 +40,7 @@ export default [
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
       'react/no-unstable-nested-components': ['warn', { allowAsProps: true }],
+      'react/no-unknown-property': 'off',
       'no-multi-str': 'warn',
       'prefer-template': 'warn',
       'func-style': ['warn', 'declaration', { allowArrowFunctions: true }],
