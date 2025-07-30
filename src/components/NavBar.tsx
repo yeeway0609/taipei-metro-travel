@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { Icons } from '@/assets/Icons'
+import { Icons } from '@/assets/icons'
 
 const items = [
   { name: '捷運路線圖', router: '/route-map', icon: Icons.RouteMap },
