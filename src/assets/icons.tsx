@@ -59,7 +59,7 @@ export const Icons = {
     </svg>
   ),
 
-  RoadMap: (props: SVGProps<SVGSVGElement>) => (
+  RouteMap: (props: SVGProps<SVGSVGElement>) => (
     <svg width={30} height={30} viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <circle cx={15.0001} cy={15.0001} r={1.94003} stroke="currentColor" strokeWidth={2} />
       <circle cx={25.9203} cy={15.0001} r={1.94003} stroke="currentColor" strokeWidth={2} />
