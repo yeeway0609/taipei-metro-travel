@@ -1,0 +1,20 @@
+@import '@silk-hq/components/unlayered-styles' layer(silk);
+@import 'tailwindcss';
+
+@theme {
+  --spacing-app: 480px;
+  --spacing-navbar: 82px;
+  --color-primary: #0197bc; /* 捷運藍 */
+  --color-gray-900: #363f3d;
+  --color-gray-600: #727272;
+  --color-gray-500: #d9d9d9;
+  --color-gray-200: #f0f0f0;
+  --color-gray-bg: #f9f9f9;
+  --gradient-metro: 90deg, #0197bc 0%, #4bb748 100%; /* 捷運漸層 */
+}
+
+@layer base {
+  body {
+    @apply bg-gray-300;
+  }
+}
