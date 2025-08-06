@@ -1,5 +1,4 @@
 'use client'
-
 import { useTransitionRouter } from 'next-view-transitions'
 import Image from 'next/image'
 import ArrowLeftIcon from '@/assets/arrow-left.svg'

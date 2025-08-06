@@ -1,5 +1,4 @@
 'use client'
-
 import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
