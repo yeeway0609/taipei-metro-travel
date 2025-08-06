@@ -1,9 +1,88 @@
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { NavHeader } from '@/components/NavHeader'
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
+import chevronIcon from '@/assets/chevron-right.svg'
+import { showNotImplementedToast } from '@/lib/utils'
+import { setUserLocale } from '@/i18n/locale'
+import type { Locale } from '@/i18n/locale'
+
 export default function ProfilePage() {
+  const t = useTranslations('ProfilePage')
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  function handleLanguageChange(language: Locale) {
+    setUserLocale(language)
+    setIsDrawerOpen(false)
+  }
+
   return (
-    <div>
-      <h1>Profile</h1>
-      <h1>Profile</h1>
-      <h1>Profile</h1>
+    <div className="min-h-dvh bg-gray-200">
+      <NavHeader title={t('title')} />
+
+      <div className="p-8">
+        <section className="flex px-4">
+          <div className="size-12 rounded-full bg-amber-300" />
+          <div className="ml-3">
+            <p className="text-caption mt-1 mb-2">Welcome Back!</p>
+            <p className="text-title-bold">CC</p>
+          </div>
+        </section>
+
+        <section className="mt-9">
+          <h2 className="text-caption px-6">{t('label_member_service')}</h2>
+          <div className="mt-2 space-y-2">
+            <FeatureItem title={t('my_account')} onClick={showNotImplementedToast} />
+            <FeatureItem title={t('passenger_service')} onClick={showNotImplementedToast} />
+          </div>
+        </section>
+
+        <section className="mt-9">
+          <h2 className="text-caption px-6">{t('label_other')}</h2>
+          <div className="mt-2 space-y-2">
+            <FeatureItem title={t('faq')} onClick={showNotImplementedToast} />
+            <FeatureItem title={t('laws_and_terms')} onClick={showNotImplementedToast} />
+            <FeatureItem title={t('emergency_contact_information')} onClick={showNotImplementedToast} />
+            <FeatureItem title={t('notification_settings')} onClick={showNotImplementedToast} />
+            <FeatureItem title={t('language_settings')} onClick={() => setIsDrawerOpen(true)} />
+
+            <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+              <DrawerContent className="pb-8">
+                <DrawerTitle></DrawerTitle>
+                <button
+                  className="border-border bg-accent mt-5 border px-5 py-2"
+                  type="button"
+                  onClick={() => handleLanguageChange('zh-TW')}
+                >
+                  {t('zhTW')}
+                </button>
+                <button
+                  className="border-border bg-accent border-b px-5 py-2"
+                  type="button"
+                  onClick={() => handleLanguageChange('en')}
+                >
+                  {t('en')}
+                </button>
+              </DrawerContent>
+            </Drawer>
+          </div>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+function FeatureItem({ title, onClick }: { title: string; onClick?: () => void }) {
+  return (
+    <div
+      className="flex cursor-pointer items-center justify-between rounded-lg bg-white py-3 pr-3 pl-6"
+      onClick={onClick}
+    >
+      <span className="text-title">{title}</span>
+      <Image className="size-6" src={chevronIcon} width={24} height={24} alt="" />
     </div>
   )
 }

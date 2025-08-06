@@ -1,12 +1,13 @@
-"use server"
+'use server'
 
-import { cookies } from "next/headers"
+import { cookies } from 'next/headers'
 
-type Locale = (typeof locales)[number]
-const locales = ["en", "zh-TW"] as const
-const defaultLocale: Locale = "zh-TW"
+export type Locale = (typeof locales)[number]
 
-const COOKIE_NAME = "NEXT_LOCALE"
+const locales = ['en', 'zh-TW'] as const
+const defaultLocale: Locale = 'zh-TW'
+
+const COOKIE_NAME = 'NEXT_LOCALE'
 
 export async function getUserLocale() {
   return (await cookies()).get(COOKIE_NAME)?.value || defaultLocale
