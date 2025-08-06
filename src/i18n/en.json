@@ -6,5 +6,43 @@
     "navbar/ai-guide": "AI Guide",
     "navbar/profile": "Profile"
   },
-  "HomePage": {}
+  "HomePage": {
+    "broadcast_message": "The 2025 Taipei World Games will be held in Taipei. From May 17th to 30th, let's cheer for the athletes together and challenge the world!",
+    "my_card/title": "My EasyCard",
+    "my_card/coupons": "Coupons",
+    "my_card/dollars_left": "NT$",
+    "my_card/dollars_right": "left",
+    "my_card/rides": "Rides",
+    "my_card/co2_reduced": "CO2 Reduced",
+    "features/travel_time_fare": "Travel time/fare",
+    "features/route_plan": "Route Planning",
+    "features/ai_guide": "AI Guide",
+    "features/go_promotion": "GO Promotion",
+    "stops/nearby_label": "Nearby",
+    "stops/favorite_label": "Favorite",
+    "stops/favorite_placeholder": "Add Favorite Stops"
+  },
+  "ProfilePage": {
+    "title": "Profile",
+    "label_member_service": "Member Service",
+    "label_other": "Others",
+    "my_account": "My Account",
+    "passenger_service": "Passenger Service",
+    "faq": "FAQ",
+    "laws_and_terms": "Laws and Terms",
+    "emergency_contact_information": "Emergency Contact Information",
+    "notification_settings": "Notification Settings",
+    "language_settings": "Language Settings",
+    "zhTW": "Traditional Chinese",
+    "en": "English"
+  },
+  "AiGuidePage": {
+    "title": "AI Guide"
+  },
+  "RouteMapPage": {
+    "title": "Route Map"
+  },
+  "TrainStatusPage": {
+    "title": "Train Status"
+  }
 }

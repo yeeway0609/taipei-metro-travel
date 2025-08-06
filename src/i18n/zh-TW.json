@@ -7,5 +7,42 @@
     "navbar/profile": "個人資訊"
   },
   "HomePage": {
+    "broadcast_message": "2025 雙北市世壯運在台北，5/17-5/30 一起為選手加油，和世界挑一場！",
+    "my_card/title": "我的票卡",
+    "my_card/coupons": "優惠券",
+    "my_card/dollars_left": "剩餘",
+    "my_card/dollars_right": "元",
+    "my_card/rides": "本月搭乘",
+    "my_card/co2_reduced": "累積減碳量",
+    "features/travel_time_fare": "查詢時間/票價",
+    "features/route_plan": "路線規劃",
+    "features/ai_guide": "AI 在地嚮導",
+    "features/go_promotion": "GO 優惠",
+    "stops/nearby_label": "鄰近站點",
+    "stops/favorite_label": "最愛站點",
+    "stops/favorite_placeholder": "請新增最愛站點"
+  },
+  "ProfilePage": {
+    "title": "個人資訊",
+    "label_member_service": "會員服務",
+    "label_other": "其他",
+    "my_account": "我的帳戶",
+    "passenger_service": "旅客服務",
+    "faq": "常見問題",
+    "laws_and_terms": "法規、條款",
+    "emergency_contact_information": "緊急聯絡資訊",
+    "notification_settings": "通知設定",
+    "language_settings": "語言設定",
+    "zhTW": "繁體中文",
+    "en": "英文"
+  },
+  "AiGuidePage": {
+    "title": "AI 在地嚮導"
+  },
+  "RouteMapPage": {
+    "title": "捷運路線圖"
+  },
+  "TrainStatusPage": {
+    "title": "列車動態"
   }
 }
