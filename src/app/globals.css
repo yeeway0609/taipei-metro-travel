@@ -1,8 +1,5 @@
-/* @import '@silk-hq/components/unlayered-styles' layer(silk); */
 @import 'tailwindcss';
 @import 'tw-animate-css';
-
-@custom-variant dark (&:is(.dark *));
 
 @theme {
   --spacing-app: 480px;
@@ -88,6 +85,8 @@
 @utility text-gradient-primary {
   @apply from-primary-blue to-primary-green bg-gradient-to-r bg-clip-text text-transparent;
 }
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
