@@ -6,7 +6,5 @@
     "navbar/ai-guide": "AI Guide",
     "navbar/profile": "Profile"
   },
-  "HomePage": {
-    "title": "Hello world!"
-  }
+  "HomePage": {}
 }

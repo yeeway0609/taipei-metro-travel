@@ -1,22 +1,22 @@
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { getTranslations } from 'next-intl/server'
 import { LocaleSwitcher } from '@/components/LocaleSwitcher'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { getTrackInfo } from '@/lib/metro-api'
 
-export default function Home() {
-  const t = useTranslations('HomePage')
+export default async function Home() {
+  // const t = useTranslations('HomePage')
+  const t = await getTranslations('HomePage')
+  const trackInfo = await getTrackInfo()
+  console.log(trackInfo)
 
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-sans sm:p-20">
-      <h1>{t('title')}</h1>
-
+    <div className="">
+      {trackInfo && (
+        <>
+          <p>{trackInfo[0].DestinationName}</p>
+          <p>{trackInfo[0].CountDown}</p>
+        </>
+      )}
     </div>
   )
 }
