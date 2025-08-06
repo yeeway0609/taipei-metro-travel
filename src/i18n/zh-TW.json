@@ -1,4 +1,11 @@
 {
+  "Common": {
+    "navbar/home": "首頁",
+    "navbar/route-map": "捷運路線圖",
+    "navbar/train-status": "列車狀態",
+    "navbar/ai-guide": "AI 在地嚮導",
+    "navbar/profile": "個人資訊"
+  },
   "HomePage": {
     "title": "你好世界"
   }

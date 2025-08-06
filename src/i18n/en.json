@@ -1,4 +1,11 @@
 {
+  "Common": {
+    "navbar/home": "Home",
+    "navbar/route-map": "Route Map",
+    "navbar/train-status": "Train Status",
+    "navbar/ai-guide": "AI Guide",
+    "navbar/profile": "Profile"
+  },
   "HomePage": {
     "title": "Hello world!"
   }
