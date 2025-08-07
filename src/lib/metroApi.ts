@@ -1,8 +1,10 @@
+'use server'
+
 const USER_NAME = process.env.METRO_API_USER_NAME
 const PASS_WORD = process.env.METRO_API_PASS_WORD
 
 /** 列車動態 */
-interface TrackInfo {
+export interface TrackInfo {
   StationName: string
   DestinationName: string
   CountDown: string

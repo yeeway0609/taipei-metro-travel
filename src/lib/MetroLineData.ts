@@ -50,14 +50,14 @@ const metroLinesData: MetroLine[] = [
     },
     color: '#1670b9',
   },
-  {
-    id: 'Y',
-    name: {
-      zhTW: '環狀線',
-      en: 'Circular Line',
-    },
-    color: '#ffd21e',
-  },
+  // {
+  //   id: 'Y',
+  //   name: {
+  //     zhTW: '環狀線',
+  //     en: 'Circular Line',
+  //   },
+  //   color: '#ffd21e',
+  // },
 ]
 
 export default metroLinesData
