@@ -6,11 +6,11 @@ import { clsx } from 'clsx'
 import { Icons } from '@/assets/icons'
 
 const items = [
-  { name: 'navbar/route-map', path: '/route-map', icon: Icons.RouteMap },
-  { name: 'navbar/train-status', path: '/train-status', icon: Icons.Train },
-  { name: 'navbar/home', path: '/', icon: Icons.Home },
-  { name: 'navbar/ai-guide', path: '/ai-guide', icon: Icons.AiGuide },
-  { name: 'navbar/profile', path: '/profile', icon: Icons.Profile },
+  { name: 'page/route_map', path: '/route-map', icon: Icons.RouteMap },
+  { name: 'page/train_status', path: '/train-status', icon: Icons.Train },
+  { name: 'page/home', path: '/', icon: Icons.Home },
+  { name: 'page/ai_guide', path: '/ai-guide', icon: Icons.AiGuide },
+  { name: 'page/profile', path: '/profile', icon: Icons.Profile },
 ]
 
 export function NavBar() {

@@ -10,7 +10,8 @@ import { setUserLocale } from '@/i18n/locale'
 import type { Locale } from '@/i18n/locale'
 
 export default function ProfilePage() {
-  const t = useTranslations('ProfilePage')
+  const tCommon = useTranslations('Common')
+  const tProfile = useTranslations('ProfilePage')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   function handleLanguageChange(language: Locale) {
@@ -20,7 +21,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-dvh bg-gray-200">
-      <NavHeader title={t('title')} />
+      <NavHeader title={tCommon('page/profile')} />
 
       <div className="p-8">
         <section className="flex px-4">
@@ -32,21 +33,21 @@ export default function ProfilePage() {
         </section>
 
         <section className="mt-9">
-          <h2 className="text-caption px-6">{t('label_member_service')}</h2>
+          <h2 className="text-caption px-6">{tProfile('label_member_service')}</h2>
           <div className="mt-2 space-y-2">
-            <FeatureItem title={t('my_account')} onClick={showNotImplementedToast} />
-            <FeatureItem title={t('passenger_service')} onClick={showNotImplementedToast} />
+            <FeatureItem title={tProfile('my_account')} onClick={showNotImplementedToast} />
+            <FeatureItem title={tProfile('passenger_service')} onClick={showNotImplementedToast} />
           </div>
         </section>
 
         <section className="mt-9">
-          <h2 className="text-caption px-6">{t('label_other')}</h2>
+          <h2 className="text-caption px-6">{tProfile('label_other')}</h2>
           <div className="mt-2 space-y-2">
-            <FeatureItem title={t('faq')} onClick={showNotImplementedToast} />
-            <FeatureItem title={t('laws_and_terms')} onClick={showNotImplementedToast} />
-            <FeatureItem title={t('emergency_contact_information')} onClick={showNotImplementedToast} />
-            <FeatureItem title={t('notification_settings')} onClick={showNotImplementedToast} />
-            <FeatureItem title={t('language_settings')} onClick={() => setIsDrawerOpen(true)} />
+            <FeatureItem title={tProfile('faq')} onClick={showNotImplementedToast} />
+            <FeatureItem title={tProfile('laws_and_terms')} onClick={showNotImplementedToast} />
+            <FeatureItem title={tProfile('emergency_contact_information')} onClick={showNotImplementedToast} />
+            <FeatureItem title={tProfile('notification_settings')} onClick={showNotImplementedToast} />
+            <FeatureItem title={tProfile('language_settings')} onClick={() => setIsDrawerOpen(true)} />
 
             <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
               <DrawerContent className="pb-8">
@@ -56,14 +57,14 @@ export default function ProfilePage() {
                   type="button"
                   onClick={() => handleLanguageChange('zh-TW')}
                 >
-                  {t('zhTW')}
+                  {tProfile('zhTW')}
                 </button>
                 <button
                   className="border-border bg-accent border-b px-5 py-2"
                   type="button"
                   onClick={() => handleLanguageChange('en')}
                 >
-                  {t('en')}
+                  {tProfile('en')}
                 </button>
               </DrawerContent>
             </Drawer>
