@@ -12,6 +12,7 @@ import stationOfLineData from '@/lib/StationOfLineData'
 import { getTrackInfo } from '@/lib/metroApi'
 import type { TrackInfo } from '@/lib/metroApi'
 import type { MetroLineID } from '@/lib/types'
+import { getTrainDirection } from '@/lib/utils'
 
 const tabTriggerClassName = {
   BR: 'peer-data-[state=active]:bg-metro-line-BR',
@@ -21,9 +22,11 @@ const tabTriggerClassName = {
   BL: 'peer-data-[state=active]:bg-metro-line-BL',
 }
 
+const API_FETCH_INTERVAL = 5000 // 15 seconds
+
 export function DynamicInfo() {
   const locale = useLocale()
-  const [trackInfo, setTrackInfo] = useState<TrackInfo[] | null>(null) // 所有路線與車站的進站狀態
+  const [currentTrackInfo, setCurrentTrackInfo] = useState<TrackInfo[] | null>(null) // 所有路線與車站的進站狀態
   const [currentLineID, setCurrentLineID] = useState<MetroLineID>('R')
 
   const currentLine = useMemo(() => metroLinesData.find((line) => line.id === currentLineID), [currentLineID])
@@ -37,12 +40,42 @@ export function DynamicInfo() {
 
   const finalStation = useMemo(() => currentStations?.[currentStations.length - 1], [currentStations])
 
+  /** 當前路線每一站的倒數時間 (包含兩個方向) */
+  const stationCountDowns = useMemo(() => {
+    if (!currentTrackInfo || !currentStations || !currentLine) return { toFinal: {}, toFirst: {} }
+
+    const toFinal: Record<string, string> = {} // key: 站點 ID, value: 往終點站的進站倒數字串
+    const toFirst: Record<string, string> = {} // key: 站點 ID, value: 往起點站的進站倒數字串
+
+    currentStations.forEach((s) => {
+      // 初始化每個站點的倒數時間為 '---'
+      toFinal[s.stationID] = '---'
+      toFirst[s.stationID] = '---'
+
+      // 取得當前站點兩邊方向的進站資訊
+      const trackInfos = currentTrackInfo.filter(
+        (info) => info.StationName.replace('站', '') === s.stationName.zhTW.replace('站', '')
+      )
+
+      trackInfos.forEach((trackInfo) => {
+        const trackDirection = getTrainDirection(currentLine.id, s.stationName.zhTW, trackInfo.DestinationName)
+        if (trackDirection === 'ToFinal') {
+          toFinal[s.stationID] = trackInfo.CountDown
+        } else if (trackDirection === 'ToFirst') {
+          toFirst[s.stationID] = trackInfo.CountDown
+        }
+      })
+    })
+
+    return { toFinal, toFirst }
+  }, [currentTrackInfo, currentStations, currentLine])
+
   useEffect(() => {
     async function fetchTrackInfo() {
       try {
         const data = await getTrackInfo()
-        if (data) setTrackInfo(data)
-        console.log('取得列車動態資料:', data)
+        if (data) setCurrentTrackInfo(data)
+        console.log(data)
       } catch (error) {
         console.error('取得列車動態資料失敗:', error)
       }
@@ -50,7 +83,7 @@ export function DynamicInfo() {
 
     fetchTrackInfo()
 
-    const interval = setInterval(fetchTrackInfo, 15000)
+    const interval = setInterval(fetchTrackInfo, API_FETCH_INTERVAL)
 
     return () => clearInterval(interval)
   }, [])
@@ -98,23 +131,30 @@ export function DynamicInfo() {
 
         {/* 進站資訊列表 */}
         <TabsContent value="to-final-station" className="space-y-4 bg-gray-100 p-4">
-          {currentStations.map((station) => {
-            const isEntering = false
-            return (
-              <TrackInfoItem
-                key={station.stationID}
-                lineID={currentLine.id}
-                lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
-                stationSequence={station.sequence}
-                stationName={locale === 'en' ? station.stationName.en : station.stationName.zhTW}
-                countDown={trackInfo ? '5 : 30' : 'Loading'}
-                isEntering={isEntering}
-              />
-            )
-          })}
+          {currentStations.map((s) => (
+            <TrackInfoItem
+              key={s.stationID}
+              lineID={currentLine.id}
+              lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
+              stationSequence={s.sequence}
+              stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
+              countDown={stationCountDowns.toFinal[s.stationID] || '---'}
+              isEntering={stationCountDowns.toFinal[s.stationID] === '列車進站'}
+            />
+          ))}
         </TabsContent>
-        <TabsContent value="to-first-station" className="bg-gray-100 p-4">
-          assdf
+        <TabsContent value="to-first-station" className="space-y-4 bg-gray-100 p-4">
+          {currentStations.toReversed().map((s) => (
+            <TrackInfoItem
+              key={s.stationID}
+              lineID={currentLine.id}
+              lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
+              stationSequence={s.sequence}
+              stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
+              countDown={stationCountDowns.toFirst[s.stationID]}
+              isEntering={stationCountDowns.toFirst[s.stationID] === '列車進站'}
+            />
+          ))}
         </TabsContent>
       </Tabs>
     </>
