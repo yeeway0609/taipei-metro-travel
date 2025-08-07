@@ -1,5 +1,4 @@
 'use client'
-
 import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
@@ -76,6 +75,7 @@ export function DynamicInfo() {
       try {
         const data = await getTrackInfo()
         if (data) setCurrentTrackInfo(data)
+        // console.log(data)
       } catch (error) {
         console.error('取得列車動態資料失敗:', error)
       }
@@ -108,10 +108,13 @@ export function DynamicInfo() {
             <Image className="mt-0.5 ml-auto size-6 rotate-90" src={chevronRightIcon} alt="" />
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent className="w-full max-w-[360px]">
+          <DropdownMenuContent className="min-w-none">
             {metroLinesData.map((line) => (
               <DropdownMenuItem key={line.id} onClick={() => setCurrentLineID(line.id)}>
-                <span className="text-body">{locale === 'en' ? line.name.en : line.name.zhTW}</span>
+                <span className="text-body whitespace-pre" style={{ color: line.color }}>
+                  <span className="inline-block w-4">{line.id.padEnd(2, ' ')}</span>{' '}
+                  {locale === 'en' ? line.name.en : line.name.zhTW}
+                </span>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
@@ -138,7 +141,7 @@ export function DynamicInfo() {
               key={s.stationID}
               lineID={currentLine.id}
               lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
-              stationSequence={s.sequence}
+              stationID={s.stationID}
               stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
               countDown={stationCountDowns.toFinal[s.stationID] || '---'}
               isEntering={stationCountDowns.toFinal[s.stationID] === '列車進站'}
@@ -151,7 +154,7 @@ export function DynamicInfo() {
               key={s.stationID}
               lineID={currentLine.id}
               lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
-              stationSequence={s.sequence}
+              stationID={s.stationID}
               stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
               countDown={stationCountDowns.toFirst[s.stationID]}
               isEntering={stationCountDowns.toFirst[s.stationID] === '列車進站'}

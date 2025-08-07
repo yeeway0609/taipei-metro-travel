@@ -9,6 +9,14 @@ interface MetroLine {
   color: string
 }
 
+export const metroLineColors: Record<MetroLineID, string> = {
+  BR: '#b57a25',
+  R: '#d90023',
+  G: '#107547',
+  O: '#ee6b00',
+  BL: '#1670b9',
+}
+
 const metroLinesData: MetroLine[] = [
   {
     id: 'BR',
@@ -16,7 +24,7 @@ const metroLinesData: MetroLine[] = [
       zhTW: '文湖線',
       en: 'Wenhu Line',
     },
-    color: '#b57a25',
+    color: metroLineColors.BR,
   },
   {
     id: 'R',
@@ -24,7 +32,7 @@ const metroLinesData: MetroLine[] = [
       zhTW: '淡水信義線',
       en: 'Tamsui-Xinyi Line',
     },
-    color: '#d90023',
+    color: metroLineColors.R,
   },
   {
     id: 'G',
@@ -32,7 +40,7 @@ const metroLinesData: MetroLine[] = [
       zhTW: '松山新店線',
       en: 'Songshan-Xindian Line',
     },
-    color: '#107547',
+    color: metroLineColors.G,
   },
   {
     id: 'O',
@@ -40,7 +48,7 @@ const metroLinesData: MetroLine[] = [
       zhTW: '中和新蘆線',
       en: 'Zhonghe-Xinlu Line',
     },
-    color: '#ee6b00',
+    color: metroLineColors.O,
   },
   {
     id: 'BL',
@@ -48,7 +56,7 @@ const metroLinesData: MetroLine[] = [
       zhTW: '板南線',
       en: 'Bannan Line',
     },
-    color: '#1670b9',
+    color: metroLineColors.BL,
   },
   // {
   //   id: 'Y',
