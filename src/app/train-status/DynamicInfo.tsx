@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -8,10 +8,9 @@ import { TrackInfoItem } from '@/components/TrackInfoItem'
 import chevronRightIcon from '@/assets/chevron-right.svg'
 import metroLinesData from '@/lib/MetroLineData'
 import stationOfLineData from '@/lib/StationOfLineData'
-import { getTrackInfo } from '@/lib/metroApi'
-import type { TrackInfo } from '@/lib/metroApi'
 import type { MetroLineID } from '@/lib/types'
 import { getTrainDirection } from '@/lib/utils'
+import { TRACK_INFO_FETCH_INTERVAL, useTrackInfo } from '@/hooks/useTrackInfo'
 import { CountdownTimer } from './CountdownTimer'
 
 const tabTriggerClassName = {
@@ -22,11 +21,9 @@ const tabTriggerClassName = {
   BL: 'peer-data-[state=active]:bg-metro-line-BL',
 }
 
-const API_FETCH_INTERVAL = 15000 // 15 seconds
-
 export function DynamicInfo() {
   const locale = useLocale()
-  const [currentTrackInfo, setCurrentTrackInfo] = useState<TrackInfo[] | null>(null) // 所有路線與車站的進站狀態
+  const currentTrackInfo = useTrackInfo()
   const [currentLineID, setCurrentLineID] = useState<MetroLineID>('R')
 
   const currentLine = useMemo(() => metroLinesData.find((line) => line.id === currentLineID), [currentLineID])
@@ -70,24 +67,6 @@ export function DynamicInfo() {
     return { toFinal, toFirst }
   }, [currentTrackInfo, currentStations, currentLine])
 
-  useEffect(() => {
-    async function fetchTrackInfo() {
-      try {
-        const data = await getTrackInfo()
-        if (data) setCurrentTrackInfo(data)
-        // console.log(data)
-      } catch (error) {
-        console.error('取得列車動態資料失敗:', error)
-      }
-    }
-
-    fetchTrackInfo()
-
-    const interval = setInterval(fetchTrackInfo, API_FETCH_INTERVAL)
-
-    return () => clearInterval(interval)
-  }, [])
-
   if (!currentLine || !currentStations || !firstStation || !finalStation) {
     // TODO: handle loading state
     return <p className="text-center text-gray-400">Loading...</p>
@@ -121,7 +100,7 @@ export function DynamicInfo() {
         </DropdownMenu>
       </section>
 
-      <CountdownTimer intervalMs={API_FETCH_INTERVAL} resetTrigger={currentTrackInfo} />
+      <CountdownTimer intervalMs={TRACK_INFO_FETCH_INTERVAL} resetTrigger={currentTrackInfo} />
 
       <Tabs defaultValue="to-final-station" className="mt-2 gap-0">
         {/* 選擇方向 */}
