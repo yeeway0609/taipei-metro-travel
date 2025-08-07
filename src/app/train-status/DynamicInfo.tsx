@@ -13,6 +13,7 @@ import { getTrackInfo } from '@/lib/metroApi'
 import type { TrackInfo } from '@/lib/metroApi'
 import type { MetroLineID } from '@/lib/types'
 import { getTrainDirection } from '@/lib/utils'
+import { CountdownTimer } from './CountdownTimer'
 
 const tabTriggerClassName = {
   BR: 'peer-data-[state=active]:bg-metro-line-BR',
@@ -22,7 +23,7 @@ const tabTriggerClassName = {
   BL: 'peer-data-[state=active]:bg-metro-line-BL',
 }
 
-const API_FETCH_INTERVAL = 5000 // 15 seconds
+const API_FETCH_INTERVAL = 15000 // 15 seconds
 
 export function DynamicInfo() {
   const locale = useLocale()
@@ -48,7 +49,7 @@ export function DynamicInfo() {
     const toFirst: Record<string, string> = {} // key: 站點 ID, value: 往起點站的進站倒數字串
 
     currentStations.forEach((s) => {
-      // 初始化每個站點的倒數時間為 '---'
+      // 初始化每個站點的倒數時間
       toFinal[s.stationID] = '---'
       toFirst[s.stationID] = '---'
 
@@ -75,7 +76,6 @@ export function DynamicInfo() {
       try {
         const data = await getTrackInfo()
         if (data) setCurrentTrackInfo(data)
-        console.log(data)
       } catch (error) {
         console.error('取得列車動態資料失敗:', error)
       }
@@ -95,7 +95,7 @@ export function DynamicInfo() {
 
   return (
     <>
-      <section className="mt-3 mb-5 px-8">
+      <section className="mt-3 mb-2 px-8">
         <DropdownMenu>
           <DropdownMenuTrigger className="flex w-full max-w-[360px] items-center px-2 py-1">
             <div
@@ -118,7 +118,9 @@ export function DynamicInfo() {
         </DropdownMenu>
       </section>
 
-      <Tabs defaultValue="to-final-station" className="gap-0">
+      <CountdownTimer intervalMs={API_FETCH_INTERVAL} resetTrigger={currentTrackInfo} />
+
+      <Tabs defaultValue="to-final-station" className="mt-2 gap-0">
         {/* 選擇方向 */}
         <TabsList className="w-full px-3">
           <TabsTrigger value="to-final-station" size="lg" divClassName={tabTriggerClassName[currentLineID]}>
