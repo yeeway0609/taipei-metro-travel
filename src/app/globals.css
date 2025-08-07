@@ -4,6 +4,7 @@
 @theme {
   --spacing-app: 480px;
   --spacing-navbar: 82px;
+
   --color-primary-blue: #0197bc; /* 捷運藍 */
   --color-primary-green: #4bb748; /* 捷運綠 */
   --color-gray-900: #363f3d;
@@ -11,6 +12,13 @@
   --color-gray-500: #d9d9d9;
   --color-gray-200: #f0f0f0;
   --color-gray-bg: #f9f9f9;
+  --color-metro-line-BR: #b57a25; /* 文湖線 */
+  --color-metro-line-R: #d90023; /* 淡水信義線 */
+  --color-metro-line-G: #107547; /* 松山新店線 */
+  --color-metro-line-O: #ee6b00; /* 中和新蘆線 */
+  --color-metro-line-BL: #1670b9; /* 板南線 */
+  --color-metro-line-Y: #ffd21e; /* 環狀線 */
+
   --gradient-metro: 90deg, #0197bc 0%, #4bb748 100%; /* 捷運漸層 */
   --animate-marquee: marquee 20s linear infinite;
 

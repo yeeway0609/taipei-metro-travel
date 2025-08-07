@@ -1,8 +1,15 @@
-import { TrackInfo } from '@/lib/types'
-
 const USER_NAME = process.env.METRO_API_USER_NAME
 const PASS_WORD = process.env.METRO_API_PASS_WORD
 
+/** 列車動態 */
+interface TrackInfo {
+  StationName: string
+  DestinationName: string
+  CountDown: string
+  NowDateTime: string
+}
+
+/** 獲取列車動態 */
 export async function getTrackInfo() {
   const options = {
     method: 'POST',

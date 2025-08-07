@@ -36,10 +36,11 @@
     "zhTW": "Traditional Chinese",
     "en": "English"
   },
-  "AiGuidePage": {
-  },
-  "RouteMapPage": {
-  },
+  "AiGuidePage": {},
+  "RouteMapPage": {},
   "TrainStatusPage": {
+    "dynamic_info": "Dynamic Info",
+    "favorite_stops": "Favorite Stops",
+    "favorite_stops_placeholder": "Add Favorite Stops"
   }
 }
