@@ -6,6 +6,9 @@ import { Noto_Sans_TC } from 'next/font/google'
 import './globals.css'
 import { NavBar } from '@/components/NavBar'
 
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+
 const notoSansTC = Noto_Sans_TC({
   variable: '--font-noto-sans-tc',
   subsets: ['latin'],
