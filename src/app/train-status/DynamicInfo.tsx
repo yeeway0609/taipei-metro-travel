@@ -13,6 +13,14 @@ import { getTrackInfo } from '@/lib/metroApi'
 import type { TrackInfo } from '@/lib/metroApi'
 import type { MetroLineID } from '@/lib/types'
 
+const tabTriggerClassName = {
+  BR: 'peer-data-[state=active]:bg-metro-line-BR',
+  R: 'peer-data-[state=active]:bg-metro-line-R',
+  G: 'peer-data-[state=active]:bg-metro-line-G',
+  O: 'peer-data-[state=active]:bg-metro-line-O',
+  BL: 'peer-data-[state=active]:bg-metro-line-BL',
+}
+
 export function DynamicInfo() {
   const locale = useLocale()
   const [trackInfo, setTrackInfo] = useState<TrackInfo[] | null>(null) // 所有路線與車站的進站狀態
@@ -80,10 +88,10 @@ export function DynamicInfo() {
       <Tabs defaultValue="to-final-station" className="gap-0">
         {/* 選擇方向 */}
         <TabsList className="w-full px-3">
-          <TabsTrigger value="to-final-station" size="lg" divClassName="peer-data-[state=active]:bg-metro-line-R">
+          <TabsTrigger value="to-final-station" size="lg" divClassName={tabTriggerClassName[currentLineID]}>
             {locale === 'en' ? `To ${finalStation.stationName.en}` : `往${finalStation.stationName.zhTW}`}
           </TabsTrigger>
-          <TabsTrigger value="to-first-station" size="lg" divClassName="peer-data-[state=active]:bg-metro-line-R">
+          <TabsTrigger value="to-first-station" size="lg" divClassName={tabTriggerClassName[currentLineID]}>
             {locale === 'en' ? `To ${firstStation.stationName.en}` : `往${firstStation.stationName.zhTW}`}
           </TabsTrigger>
         </TabsList>
