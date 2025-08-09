@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getLocale } from 'next-intl/server'
 import { ViewTransitions } from 'next-view-transitions'
 import { Noto_Sans_TC } from 'next/font/google'
+import { Toaster } from 'sonner'
 import './globals.css'
 import { NavBar } from '@/components/NavBar'
 
@@ -34,6 +35,7 @@ export default async function RootLayout({
         <html lang={locale}>
           <body className={`${notoSansTC.variable}`}>
             <div className="max-w-app pb-navbar mx-auto min-h-dvh w-full bg-white antialiased">
+              <Toaster position="top-center" richColors duration={2000} visibleToasts={2} />
               {children}
               <NavBar />
             </div>

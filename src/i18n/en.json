@@ -36,7 +36,14 @@
     "zhTW": "Traditional Chinese",
     "en": "English"
   },
-  "AiGuidePage": {},
+  "AiGuidePage": {
+    "hint_message": "Using AI-based image recognition to plan metro routes",
+    "upload": "Upload",
+    "upload_destination_photo": "Upload Destination Photo",
+    "or": "Or",
+    "take_photo": "Take a photo",
+    "demo_loading": "Loading example..."
+  },
   "RouteMapPage": {},
   "TrainStatusPage": {
     "dynamic_info": "Dynamic Info",

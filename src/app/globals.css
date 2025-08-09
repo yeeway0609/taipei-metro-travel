@@ -58,6 +58,12 @@
   }
 }
 
+@layer components {
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary-blue to-primary-green;
+  }
+}
+
 @utility text-heading {
   @apply text-[24px] leading-tight font-normal;
 }

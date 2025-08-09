@@ -35,7 +35,14 @@
     "zhTW": "繁體中文",
     "en": "英文"
   },
-  "AiGuidePage": {},
+  "AiGuidePage": {
+    "hint_message": "使用 AI 智慧圖片辨識規畫捷運路線",
+    "upload": "上傳",
+    "upload_destination_photo": "上傳目的地照片",
+    "or": "或",
+    "take_photo": "拍張照片",
+    "demo_loading": "載入測試範例..."
+  },
   "RouteMapPage": {},
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",
