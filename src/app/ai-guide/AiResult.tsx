@@ -1,5 +1,3 @@
 export function AiResult() {
-  return (
-    <div></div>
-  )
+  return <div></div>
 }
