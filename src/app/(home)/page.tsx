@@ -9,7 +9,7 @@ import chevronRightIcon from '@/assets/chevron-right.svg'
 import { showNotImplementedToast } from '@/lib/utils'
 import { AdCarousel } from './AdCarousel'
 import { FavoriteFeature } from './FavoriteFeature'
-import { FavoriteStops } from './FavoriteStops'
+import { TrackInfos } from './TrackInfos'
 
 export default function HomePage() {
   const t = useTranslations('HomePage')
@@ -77,7 +77,7 @@ export default function HomePage() {
 
       {/* 站點資訊 */}
       <section className="mx-6 mt-2.5">
-        <FavoriteStops />
+        <TrackInfos />
       </section>
     </>
   )
