@@ -19,7 +19,7 @@ export function NavBar() {
   const firstPathSegment = '/' + pathname.split('/')[1] || ''
 
   return (
-    <div className="max-w-app fixed bottom-0 w-full px-2.5">
+    <div className="max-w-app h-navbar fixed bottom-0 w-full px-2.5">
       <nav className="bg-gray-bg flex w-full items-center justify-between rounded-t-3xl px-2 py-4">
         {items.map((item) => {
           const Icon = item.icon

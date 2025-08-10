@@ -15,7 +15,7 @@ export default function HomePage() {
   const t = useTranslations('HomePage')
 
   return (
-    <>
+    <div className="pb-navbar">
       <div className="flex items-center justify-between px-6 py-5">
         <Image src={logoImg} alt="Logo" width={130} height={21} />
         <button type="button" onClick={showNotImplementedToast}>
@@ -79,6 +79,6 @@ export default function HomePage() {
       <section className="mx-6 mt-2.5">
         <TrackInfos />
       </section>
-    </>
+    </div>
   )
 }

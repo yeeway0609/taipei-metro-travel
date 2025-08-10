@@ -21,21 +21,20 @@ export default function AiGuidePage() {
     setTimeout(() => {
       setIsLoadingResult(false)
       setShowResult(true)
-    }, 3000)
+    }, 2000)
   }
 
   return (
-    <>
+    <div className="pb-navbar min-h-dvh bg-gray-200">
       <NavHeader title={tCommon('page/ai_guide')} />
+      <div className="bg-gradient-primary h-1 w-full" />
 
       {!showResult ? (
         <>
-          <div className="bg-gradient-primary h-1 w-full" />
-
           <p className="text-body my-8 text-center">{tAiGuide('hint_message')}</p>
 
           <div className="mx-auto flex w-5/6 flex-col items-center rounded-2xl bg-gray-100 p-10">
-            <Image src={photoIcon} width={55} height={5} alt="Photo Icon" className="mb-5" />
+            <Image src={photoIcon} width={55} height={55} alt="Photo Icon" className="mb-5" />
             <p className="text-title mb-5 text-center text-gray-600">{tAiGuide('upload_destination_photo')}</p>
             <button
               className="text-title bg-gradient-primary flex w-full max-w-5/6 items-center justify-center gap-1.5 rounded px-4 py-2 text-white"
@@ -62,6 +61,6 @@ export default function AiGuidePage() {
       ) : (
         <AiResult />
       )}
-    </>
+    </div>
   )
 }

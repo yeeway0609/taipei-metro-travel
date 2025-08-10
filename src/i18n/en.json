@@ -42,12 +42,28 @@
     "upload_destination_photo": "Upload Destination Photo",
     "or": "Or",
     "take_photo": "Take a photo",
-    "demo_loading": "Loading example..."
+    "demo_loading": "Loading example...",
+    "spot_name": "Chiang Kai-shek Memorial Hall",
+    "spot_address": "Address: Chung-Jeng District, Taipei City",
+    "spot_opening_hours": "Opening Hours: Monday to Friday 9:00 AM - 6:00 PM",
+    "route_plan": "Route Planning: Current Location → C.K.S. Memorial Hall",
+    "spot_intro": "Spot Introduction: C.K.S. Memorial Hall Station",
+    "spot_goods": "Related Goods: C.K.S. Memorial Hall Surroundings",
+    "reupload_photo": "Re-upload Photo"
   },
   "RouteMapPage": {},
   "TrainStatusPage": {
     "dynamic_info": "Dynamic Info",
     "favorite_stops": "Favorite Stops",
     "favorite_stops_placeholder": "Add Favorite Stops"
+  },
+  "RoutePlanDrawer": {
+    "minute": "minutes",
+    "pass_stops": "Passed {count} stops",
+    "station_map": "Station Map",
+    "entrance": "Enter from entrance {number}",
+    "estimated_departure_minutes": "Estimated Departure in {count} Minutes",
+    "departure_platform": "Platform {number}",
+    "estimated_arrival_time": "Estimated Arrival Time"
   }
 }

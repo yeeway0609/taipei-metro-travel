@@ -41,12 +41,28 @@
     "upload_destination_photo": "上傳目的地照片",
     "or": "或",
     "take_photo": "拍張照片",
-    "demo_loading": "載入測試範例..."
+    "demo_loading": "載入測試範例...",
+    "spot_name": "中正紀念堂",
+    "spot_address": "地址：100 台灣台北市中正區",
+    "spot_opening_hours": "開放時間：週一~週五 9:00 - 18:00",
+    "route_plan": "路線規劃：你的位置 → 中正紀念堂",
+    "spot_intro": "景點介紹：中正紀念堂站",
+    "spot_goods": "相關商品：中正紀念堂周邊商品",
+    "reupload_photo": "重新上傳照片"
   },
   "RouteMapPage": {},
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",
     "favorite_stops": "最愛站點",
     "favorite_stops_placeholder": "請新增最愛站點"
+  },
+  "RoutePlanDrawer": {
+    "minute": "分鐘",
+    "pass_stops": "經過 {count} 站",
+    "station_map": "站內地圖",
+    "entrance": "從 {number} 號入口進站",
+    "estimated_departure_minutes": "預計發車 {count} 分鐘內",
+    "departure_platform": "{number} 號月台",
+    "estimated_arrival_time": "預計到站時間"
   }
 }
