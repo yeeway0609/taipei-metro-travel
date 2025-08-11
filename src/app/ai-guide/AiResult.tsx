@@ -5,7 +5,7 @@ import { showNotImplementedToast } from '@/lib/utils'
 import spotImg from '@/assets/中正紀念堂.png'
 import { RoutePlanDrawer } from '@/components/RoutePlanDrawer'
 
-export function AiResult() {
+export function AiResult({ setShowResult }: { setShowResult: (show: boolean) => void }) {
   const tAiGuide = useTranslations('AiGuidePage')
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
@@ -44,7 +44,7 @@ export function AiResult() {
 
         <button
           className="mt-5 w-full max-w-56 rounded border border-red-600 bg-white px-1 py-1.5 text-red-600"
-          onClick={showNotImplementedToast}
+          onClick={() => setShowResult(false)}
         >
           {tAiGuide('reupload_photo')}
         </button>
