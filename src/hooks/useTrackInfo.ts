@@ -4,6 +4,7 @@ import type { TrackInfo } from '@/lib/metroApi'
 
 export const TRACK_INFO_FETCH_INTERVAL = 15000 // 15 seconds
 
+// TODO: 這邊可以改為全域 context
 export function useTrackInfo() {
   const [currentTrackInfo, setCurrentTrackInfo] = useState<TrackInfo[] | null>(null)
 

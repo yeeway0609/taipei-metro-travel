@@ -1,4 +1,5 @@
 'use client'
+import { useTranslations } from 'next-intl'
 import { useState, useEffect } from 'react'
 
 interface CountdownTimerProps {
@@ -8,6 +9,7 @@ interface CountdownTimerProps {
 }
 
 export function CountdownTimer({ intervalMs, onComplete, resetTrigger }: CountdownTimerProps) {
+  const t = useTranslations('TrainStatusPage')
   const [secondsUntilUpdate, setSecondsUntilUpdate] = useState(intervalMs / 1000)
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export function CountdownTimer({ intervalMs, onComplete, resetTrigger }: Countdo
 
   return (
     <p className="text-caption text-center text-gray-800">
-      約 {secondsUntilUpdate.toString().padStart(2, '0')} 秒後更新
+      {t('timer', { count: secondsUntilUpdate.toString().padStart(2, '0') })}
     </p>
   )
 }

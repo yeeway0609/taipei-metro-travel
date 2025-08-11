@@ -11,6 +11,7 @@ import stationOfLineData from '@/lib/StationOfLineData'
 import type { MetroLineID } from '@/lib/types'
 import { getTrainDirection } from '@/lib/utils'
 import { TRACK_INFO_FETCH_INTERVAL, useTrackInfo } from '@/hooks/useTrackInfo'
+import { Locale } from '@/i18n/locale'
 import { CountdownTimer } from './CountdownTimer'
 
 const tabTriggerClassName = {
@@ -22,7 +23,7 @@ const tabTriggerClassName = {
 }
 
 export function DynamicInfo() {
-  const locale = useLocale()
+  const locale = useLocale() as Locale
   const currentTrackInfo = useTrackInfo()
   const [currentLineID, setCurrentLineID] = useState<MetroLineID>('R')
 
@@ -57,15 +58,24 @@ export function DynamicInfo() {
       trackInfos.forEach((trackInfo) => {
         const trackDirection = getTrainDirection(currentLine.id, s.stationName.zhTW, trackInfo.DestinationName)
         if (trackDirection === 'ToFinal') {
-          toFinal[s.stationID] = trackInfo.CountDown
+          toFinal[s.stationID] = translateCountDown(trackInfo.CountDown, locale)
         } else if (trackDirection === 'ToFirst') {
-          toFirst[s.stationID] = trackInfo.CountDown
+          toFirst[s.stationID] = translateCountDown(trackInfo.CountDown, locale)
         }
       })
     })
 
     return { toFinal, toFirst }
   }, [currentTrackInfo, currentStations, currentLine])
+
+  function translateCountDown(countDown: string, locale: Locale) {
+    if (countDown === '列車進站' && locale === 'zh-TW') return '進站中'
+    if (countDown === '列車進站' && locale === 'en') return 'Arriving'
+    if (countDown === '營運時間已過' && locale === 'en') return 'Closed'
+    if (countDown === '資料擷取中') return '---'
+
+    return countDown
+  }
 
   if (!currentLine || !currentStations || !firstStation || !finalStation) {
     // TODO: handle loading state
@@ -102,7 +112,7 @@ export function DynamicInfo() {
 
       <CountdownTimer intervalMs={TRACK_INFO_FETCH_INTERVAL} resetTrigger={currentTrackInfo} />
 
-      <Tabs defaultValue="to-final-station" className="mt-2 gap-0">
+      <Tabs defaultValue="to-final-station" className="mt-3 gap-0">
         {/* 選擇方向 */}
         <TabsList className="w-full px-3">
           <TabsTrigger value="to-final-station" size="lg" divClassName={tabTriggerClassName[currentLineID]}>
@@ -123,7 +133,10 @@ export function DynamicInfo() {
               stationID={s.stationID}
               stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
               countDown={stationCountDowns.toFinal[s.stationID] || '---'}
-              isEntering={stationCountDowns.toFinal[s.stationID] === '列車進站'}
+              isEntering={
+                stationCountDowns.toFinal[s.stationID] === '進站中' ||
+                stationCountDowns.toFinal[s.stationID] === 'Arriving'
+              }
             />
           ))}
         </TabsContent>
@@ -136,7 +149,10 @@ export function DynamicInfo() {
               stationID={s.stationID}
               stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
               countDown={stationCountDowns.toFirst[s.stationID]}
-              isEntering={stationCountDowns.toFirst[s.stationID] === '列車進站'}
+              isEntering={
+                stationCountDowns.toFinal[s.stationID] === '進站中' ||
+                stationCountDowns.toFinal[s.stationID] === 'Arriving'
+              }
             />
           ))}
         </TabsContent>

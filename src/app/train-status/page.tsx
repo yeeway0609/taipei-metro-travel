@@ -8,7 +8,7 @@ export default function TrainStatusPage() {
   const tTrainStatus = useTranslations('TrainStatusPage')
 
   return (
-    <div className="px-5">
+    <div className="px-5 pb-20">
       <NavHeader title={tCommon('page/train_status')} />
 
       <Tabs defaultValue="dynamic-info">

@@ -27,14 +27,14 @@ export function TrackInfoItem({
   return (
     lineData && (
       <div className="flex items-center gap-2.5">
-        <time
+        <div
           className={clsx(
-            'text-title-bold flex h-[30px] w-24 items-center justify-center rounded-[100px] border-[1.5px] pb-px',
+            'text-title-bold flex h-[30px] w-24 shrink-0 items-center justify-center rounded-[100px] border-[1.5px] pb-px',
             isEntering ? 'border-[#DC2626] text-[#DC2626]' : 'border-[#727272] text-[#727272]'
           )}
         >
-          {isEntering ? '進站中' : countDown}
-        </time>
+          {countDown}
+        </div>
 
         {showDirectionText && <span className="text-caption">往</span>}
 

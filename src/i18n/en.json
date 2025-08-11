@@ -55,7 +55,8 @@
   "TrainStatusPage": {
     "dynamic_info": "Dynamic Info",
     "favorite_stops": "Favorite Stops",
-    "favorite_stops_placeholder": "Add Favorite Stops"
+    "favorite_stops_placeholder": "Add Favorite Stops",
+    "timer": "About {count} seconds to update"
   },
   "RoutePlanDrawer": {
     "minute": "minutes",

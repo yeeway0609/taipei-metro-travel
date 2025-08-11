@@ -54,7 +54,8 @@
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",
     "favorite_stops": "最愛站點",
-    "favorite_stops_placeholder": "請新增最愛站點"
+    "favorite_stops_placeholder": "請新增最愛站點",
+    "timer": "約 {count} 秒後更新"
   },
   "RoutePlanDrawer": {
     "minute": "分鐘",

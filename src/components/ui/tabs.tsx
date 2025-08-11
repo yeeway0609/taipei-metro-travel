@@ -11,7 +11,7 @@ function TabsList({ className, ...props }: React.ComponentProps<typeof TabsPrimi
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"
-      className={cn('inline-flex w-fit items-center justify-center gap-2', className)}
+      className={cn('inline-flex w-fit items-end justify-center gap-2', className)}
       {...props}
     />
   )
@@ -28,7 +28,7 @@ function TabsTrigger({
       <TabsPrimitive.Trigger
         data-slot="tabs-trigger"
         className={cn(
-          'peer inline-flex h-[calc(100%-1px)] w-full items-center justify-center whitespace-nowrap',
+          'peer inline-flex h-[calc(100%-1px)] w-full items-center justify-center',
           size === 'sm' && 'data-[state=active]:text-body-bold text-body',
           size === 'lg' && 'data-[state=active]:text-title-bold text-title pb-2',
           className
