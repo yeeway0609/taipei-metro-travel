@@ -10,7 +10,6 @@ export default async function StationMapPage({ params }: { params: Promise<{ sta
   const rawStationName = (await params).stationName
   const stationName = decodeURIComponent(rawStationName)
   const stationInfo = getStationInfosByName(stationName)
-  console.log(stationInfo)
 
   if (!stationInfo) {
     return redirect('/route-map')

@@ -8,7 +8,7 @@ const DEMO_STATION = '台北車站'
 const DEMO_STATIONS = ['台北101/世貿', '南京復興']
 
 const demoStationData = stationOfLineData.filter((line) =>
-  line.stations.some((s) => s.stationName.zhTW === DEMO_STATION)
+  line.stations.some((s) => s.stationName['zh-TW'] === DEMO_STATION)
 )
 
 // console.log(demoStation1)

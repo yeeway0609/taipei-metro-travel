@@ -13,7 +13,7 @@ export function useTrackInfo() {
       try {
         const data = await getTrackInfo()
         if (data) setCurrentTrackInfo(data)
-        console.log('取得列車動態資料:', data)
+        // console.log('取得列車動態資料:', data)
       } catch (error) {
         console.error('取得列車動態資料失敗:', error)
       }

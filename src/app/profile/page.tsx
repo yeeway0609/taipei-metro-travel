@@ -7,7 +7,7 @@ import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui/drawer'
 import chevronIcon from '@/assets/chevron-right.svg'
 import { showNotImplementedToast } from '@/lib/utils'
 import { setUserLocale } from '@/i18n/locale'
-import type { Locale } from '@/i18n/locale'
+import type { Locale } from '@/lib/types'
 
 export default function ProfilePage() {
   const tCommon = useTranslations('Common')
