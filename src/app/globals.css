@@ -36,12 +36,20 @@
 @layer base {
   body {
     font-family: 'Noto Sans TC', sans-serif;
-    overscroll-behavior: none;
+    overscroll-behavior-y: none;
     @apply bg-gray-300;
   }
 
   button {
     @apply cursor-pointer;
+  }
+
+  img {
+    user-select: none;
+    pointer-events: none;
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
   }
 
   .embla {
@@ -60,7 +68,7 @@
 
 @layer components {
   .bg-gradient-primary {
-    @apply bg-gradient-to-r from-primary-blue to-primary-green;
+    @apply from-primary-blue to-primary-green bg-gradient-to-r;
   }
 }
 
