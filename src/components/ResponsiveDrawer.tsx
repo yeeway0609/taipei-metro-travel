@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { clsx } from 'clsx'
 import { Drawer } from 'vaul'
 
-const snapPoints = ['240px', 0.9]
+const snapPoints = ['220px', 0.8]
 
 export function ResponsiveDrawer({ children }: { children: React.ReactNode }) {
   const [snap, setSnap] = useState<number | string | null>(snapPoints[0])
@@ -13,13 +13,14 @@ export function ResponsiveDrawer({ children }: { children: React.ReactNode }) {
       open
       handleOnly
       dismissible={false}
+      modal={false}
       repositionInputs={false}
       snapPoints={snapPoints}
       activeSnapPoint={snap}
       setActiveSnapPoint={setSnap}
     >
       <Drawer.Portal>
-        <Drawer.Content className="border-b-none fixed right-0 bottom-0 left-0 flex h-full max-h-[95%] min-h-[240px] flex-col rounded-t-xl border border-gray-200 bg-white shadow-[0_0_15px_-5px_rgba(0,0,0,0.25)]">
+        <Drawer.Content className="border-b-none fixed right-0 bottom-0 left-0 flex h-full min-h-[240px] flex-col rounded-t-xl border border-gray-200 bg-white shadow-[0_0_15px_-5px_rgba(0,0,0,0.25)]">
           <Drawer.Handle className="my-2" style={{ width: '80px' }} />
 
           <div

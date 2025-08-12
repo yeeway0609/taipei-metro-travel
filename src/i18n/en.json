@@ -53,7 +53,12 @@
     "spot_goods": "Related Goods: C.K.S. Memorial Hall Surroundings",
     "reupload_photo": "Re-upload Photo"
   },
-  "RouteMapPage": {},
+  "RouteMapPage": {
+    "search_placeholder": "Click a station on the map or type to search",
+    "train_status": "Train Status",
+    "first_and_last_train": "First and Last Train Info",
+    "ubike_stations": "Ubike Stations"
+  },
   "TrainStatusPage": {
     "dynamic_info": "Dynamic Info",
     "favorite_stops": "Favorite Stops",
@@ -63,7 +68,6 @@
   "RoutePlanDrawer": {
     "minute": "minutes",
     "pass_stops": "Passed {count} stops",
-    "station_map": "Station Map",
     "entrance": "Enter from entrance {number}",
     "estimated_departure_minutes": "Estimated Departure in {count} Minutes",
     "departure_platform": "Platform {number}",

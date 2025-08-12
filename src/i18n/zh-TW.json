@@ -52,7 +52,12 @@
     "spot_goods": "相關商品：中正紀念堂周邊商品",
     "reupload_photo": "重新上傳照片"
   },
-  "RouteMapPage": {},
+  "RouteMapPage": {
+    "search_placeholder": "點擊地圖上的車站或在此打字搜尋",
+    "train_status": "進站狀態",
+    "first_and_last_train": "首末班車資訊",
+    "ubike_stations": "Ubike 站點"
+  },
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",
     "favorite_stops": "最愛站點",
@@ -62,7 +67,6 @@
   "RoutePlanDrawer": {
     "minute": "分鐘",
     "pass_stops": "經過 {count} 站",
-    "station_map": "站內地圖",
     "entrance": "從 {number} 號入口進站",
     "estimated_departure_minutes": "預計發車 {count} 分鐘內",
     "departure_platform": "{number} 號月台",

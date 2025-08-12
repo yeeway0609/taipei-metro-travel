@@ -21,10 +21,10 @@ export function getTrainDirection(
   if (!line) return 'Unknown'
 
   const current = line.stations.find(
-    (s) => s.stationName.zhTW.replace('站', '') === currentStationName.replace('站', '')
+    (s) => s.stationName['zh-TW'].replace('站', '') === currentStationName.replace('站', '')
   )
   const destination = line.stations.find(
-    (s) => s.stationName.zhTW.replace('站', '') === destinationStationName.replace('站', '')
+    (s) => s.stationName['zh-TW'].replace('站', '') === destinationStationName.replace('站', '')
   )
 
   if (!current || !destination) return 'Unknown'

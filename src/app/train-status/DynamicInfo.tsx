@@ -11,7 +11,7 @@ import stationOfLineData from '@/lib/StationOfLineData'
 import type { MetroLineID } from '@/lib/types'
 import { getTrainDirection } from '@/lib/utils'
 import { TRACK_INFO_FETCH_INTERVAL, useTrackInfo } from '@/hooks/useTrackInfo'
-import { Locale } from '@/i18n/locale'
+import { Locale } from '@/lib/types'
 import { CountdownTimer } from './CountdownTimer'
 
 const tabTriggerClassName = {
@@ -52,11 +52,11 @@ export function DynamicInfo() {
 
       // 取得當前站點兩邊方向的進站資訊
       const trackInfos = currentTrackInfo.filter(
-        (info) => info.StationName.replace('站', '') === s.stationName.zhTW.replace('站', '')
+        (info) => info.StationName.replace('站', '') === s.stationName['zh-TW'].replace('站', '')
       )
 
       trackInfos.forEach((trackInfo) => {
-        const trackDirection = getTrainDirection(currentLine.id, s.stationName.zhTW, trackInfo.DestinationName)
+        const trackDirection = getTrainDirection(currentLine.id, s.stationName['zh-TW'], trackInfo.DestinationName)
         if (trackDirection === 'ToFinal') {
           toFinal[s.stationID] = translateCountDown(trackInfo.CountDown, locale)
         } else if (trackDirection === 'ToFirst') {
@@ -93,7 +93,7 @@ export function DynamicInfo() {
             >
               {currentLine.id}
             </div>
-            <span className="text-body ml-2">{locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}</span>
+            <span className="text-body ml-2">{currentLine.name[locale]}</span>
             <Image className="mt-0.5 ml-auto size-6 rotate-90" src={chevronRightIcon} alt="" />
           </DropdownMenuTrigger>
 
@@ -101,8 +101,7 @@ export function DynamicInfo() {
             {Object.values(metroLinesData).map((line) => (
               <DropdownMenuItem key={line.id} onClick={() => setCurrentLineID(line.id)}>
                 <span className="text-body whitespace-pre" style={{ color: line.color }}>
-                  <span className="inline-block w-4">{line.id.padEnd(2, ' ')}</span>{' '}
-                  {locale === 'en' ? line.name.en : line.name.zhTW}
+                  <span className="inline-block w-4">{line.id.padEnd(2, ' ')}</span> {line.name[locale]}
                 </span>
               </DropdownMenuItem>
             ))}
@@ -116,10 +115,10 @@ export function DynamicInfo() {
         {/* 選擇方向 */}
         <TabsList className="w-full px-3">
           <TabsTrigger value="to-final-station" size="lg" divClassName={tabTriggerClassName[currentLineID]}>
-            {locale === 'en' ? `To ${finalStation.stationName.en}` : `往${finalStation.stationName.zhTW}`}
+            {locale === 'en' ? `To ${finalStation.stationName.en}` : `往${finalStation.stationName['zh-TW']}`}
           </TabsTrigger>
           <TabsTrigger value="to-first-station" size="lg" divClassName={tabTriggerClassName[currentLineID]}>
-            {locale === 'en' ? `To ${firstStation.stationName.en}` : `往${firstStation.stationName.zhTW}`}
+            {locale === 'en' ? `To ${firstStation.stationName.en}` : `往${firstStation.stationName['zh-TW']}`}
           </TabsTrigger>
         </TabsList>
 
@@ -129,9 +128,9 @@ export function DynamicInfo() {
             <TrackInfoItem
               key={s.stationID}
               lineID={currentLine.id}
-              lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
+              lineName={currentLine.name[locale]}
               stationID={s.stationID}
-              stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
+              stationName={s.stationName[locale]}
               countDown={stationCountDowns.toFinal[s.stationID] || '---'}
               isEntering={
                 stationCountDowns.toFinal[s.stationID] === '進站中' ||
@@ -145,13 +144,13 @@ export function DynamicInfo() {
             <TrackInfoItem
               key={s.stationID}
               lineID={currentLine.id}
-              lineName={locale === 'en' ? currentLine.name.en : currentLine.name.zhTW}
+              lineName={currentLine.name[locale]}
               stationID={s.stationID}
-              stationName={locale === 'en' ? s.stationName.en : s.stationName.zhTW}
+              stationName={s.stationName[locale]}
               countDown={stationCountDowns.toFirst[s.stationID]}
               isEntering={
-                stationCountDowns.toFinal[s.stationID] === '進站中' ||
-                stationCountDowns.toFinal[s.stationID] === 'Arriving'
+                stationCountDowns.toFirst[s.stationID] === '進站中' ||
+                stationCountDowns.toFirst[s.stationID] === 'Arriving'
               }
             />
           ))}

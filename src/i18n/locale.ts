@@ -1,10 +1,7 @@
 'use server'
-
 import { cookies } from 'next/headers'
+import { Locale } from '@/lib/types'
 
-export type Locale = (typeof locales)[number]
-
-const locales = ['en', 'zh-TW'] as const
 const defaultLocale: Locale = 'zh-TW'
 
 const COOKIE_NAME = 'NEXT_LOCALE'

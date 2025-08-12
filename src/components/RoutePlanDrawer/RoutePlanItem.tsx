@@ -1,8 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { StationIdBadge } from '@/components/StationIdBadge'
-import Image from 'next/image'
-import mapIcon from '@/assets/map.svg'
 import { MetroLineID } from '@/lib/types'
+import { StationMapButton } from '@/components/StationMapButton'
 
 interface RoutePlanItemProps {
   lineID: MetroLineID
@@ -27,10 +26,6 @@ export function RoutePlanItem({
 }: RoutePlanItemProps) {
   const t = useTranslations('RoutePlanDrawer')
 
-  function handleMapClick() {
-    // TODO: nav to station map
-  }
-
   return (
     <section className="flex h-40">
       <div className="relative">
@@ -48,13 +43,7 @@ export function RoutePlanItem({
       </div>
 
       <div className="ml-auto flex shrink-0 flex-col items-center">
-        <button
-          className="from-primary-green/20 to-primary-blue/20 flex items-center gap-1 rounded-xl bg-gradient-to-r px-4 py-2.5"
-          onClick={handleMapClick}
-        >
-          <Image src={mapIcon} alt="Map Icon" width={24} height={24} />
-          <span className="text-title">{t('station_map')}</span>
-        </button>
+        <StationMapButton stationName={stationName} />
 
         <p className="text-caption mt-6">{t('estimated_arrival_time')}</p>
         <p className="mt-2 text-xl font-bold">{arrivalTime}</p>
