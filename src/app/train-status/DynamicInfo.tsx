@@ -27,7 +27,7 @@ export function DynamicInfo() {
   const currentTrackInfo = useTrackInfo()
   const [currentLineID, setCurrentLineID] = useState<MetroLineID>('R')
 
-  const currentLine = useMemo(() => metroLinesData.find((line) => line.id === currentLineID), [currentLineID])
+  const currentLine = useMemo(() => metroLinesData[currentLineID], [currentLineID])
 
   const currentStations = useMemo(
     () => stationOfLineData.find((line) => line.lineID === currentLineID)?.stations,
@@ -98,7 +98,7 @@ export function DynamicInfo() {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent className="min-w-none">
-            {metroLinesData.map((line) => (
+            {Object.values(metroLinesData).map((line) => (
               <DropdownMenuItem key={line.id} onClick={() => setCurrentLineID(line.id)}>
                 <span className="text-body whitespace-pre" style={{ color: line.color }}>
                   <span className="inline-block w-4">{line.id.padEnd(2, ' ')}</span>{' '}

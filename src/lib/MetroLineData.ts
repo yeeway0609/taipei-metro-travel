@@ -17,8 +17,8 @@ export const metroLineColors: Record<MetroLineID, string> = {
   BL: '#1670b9',
 }
 
-const metroLinesData: MetroLine[] = [
-  {
+const metroLinesData: Record<MetroLineID, MetroLine> = {
+  BR: {
     id: 'BR',
     name: {
       zhTW: '文湖線',
@@ -26,7 +26,7 @@ const metroLinesData: MetroLine[] = [
     },
     color: metroLineColors.BR,
   },
-  {
+  R: {
     id: 'R',
     name: {
       zhTW: '淡水信義線',
@@ -34,7 +34,7 @@ const metroLinesData: MetroLine[] = [
     },
     color: metroLineColors.R,
   },
-  {
+  G: {
     id: 'G',
     name: {
       zhTW: '松山新店線',
@@ -42,7 +42,7 @@ const metroLinesData: MetroLine[] = [
     },
     color: metroLineColors.G,
   },
-  {
+  O: {
     id: 'O',
     name: {
       zhTW: '中和新蘆線',
@@ -50,7 +50,7 @@ const metroLinesData: MetroLine[] = [
     },
     color: metroLineColors.O,
   },
-  {
+  BL: {
     id: 'BL',
     name: {
       zhTW: '板南線',
@@ -58,7 +58,7 @@ const metroLinesData: MetroLine[] = [
     },
     color: metroLineColors.BL,
   },
-  // {
+  // Y: {
   //   id: 'Y',
   //   name: {
   //     zhTW: '環狀線',
@@ -66,6 +66,6 @@ const metroLinesData: MetroLine[] = [
   //   },
   //   color: '#ffd21e',
   // },
-]
+}
 
 export default metroLinesData

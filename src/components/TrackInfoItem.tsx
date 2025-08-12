@@ -22,7 +22,7 @@ export function TrackInfoItem({
   isEntering = false,
   showDirectionText = false,
 }: TrackInfoItemProps) {
-  const lineData = metroLinesData.find((line) => line.id === lineID)
+  const lineData = metroLinesData[lineID]
 
   return (
     lineData && (
