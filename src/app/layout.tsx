@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale } from 'next-intl/server'
 import { ViewTransitions } from 'next-view-transitions'
@@ -20,6 +20,14 @@ const notoSansTC = Noto_Sans_TC({
 export const metadata: Metadata = {
   title: '捷伴旅行',
   description: '2025 台北捷運黑客松參賽作品',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  minimumScale: 1,
+  userScalable: false,
 }
 
 export default async function RootLayout({
