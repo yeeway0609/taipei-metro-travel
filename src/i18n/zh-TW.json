@@ -4,7 +4,9 @@
     "page/route_map": "捷運路線圖",
     "page/train_status": "列車狀態",
     "page/ai_guide": "AI 在地嚮導",
-    "page/profile": "個人資訊"
+    "page/profile": "個人資訊",
+    "page/station_map": "站內地圖",
+    "page/route_planning": "路線規劃"
   },
   "HomePage": {
     "broadcast_message": "2025 雙北市世壯運在台北，5/17-5/30 一起為選手加油，和世界挑一場！",

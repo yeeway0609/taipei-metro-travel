@@ -4,7 +4,9 @@
     "page/route_map": "Route Map",
     "page/train_status": "Train Status",
     "page/ai_guide": "AI Guide",
-    "page/profile": "Profile"
+    "page/profile": "Profile",
+    "page/station_map": "Station Map",
+    "page/route_planning": "Route Planning"
   },
   "HomePage": {
     "broadcast_message": "The 2025 Taipei World Games will be held in Taipei. From May 17th to 30th, let's cheer for the athletes together and challenge the world!",

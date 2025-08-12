@@ -10,6 +10,10 @@ interface Station {
   cumulativeDistance: number
 }
 
+interface StationWithLineID extends Station {
+  lineID: MetroLineID
+}
+
 interface StationOfLine {
   lineID: MetroLineID
   stations: Station[]
@@ -1133,3 +1137,24 @@ const stationOfLineData: StationOfLine[] = [
 ]
 
 export default stationOfLineData
+
+/** 取得指定站名的車站資訊（多線交會的站點會有多筆資料） */
+export function getStationInfosByName(name: string) {
+  const result: StationWithLineID[] = []
+
+  for (const line of stationOfLineData) {
+    for (const station of line.stations) {
+      if (
+        name.replace('站', '') === station.stationName.zhTW.replace('站', '') ||
+        name.toLowerCase() === station.stationName.en.toLowerCase()
+      ) {
+        result.push({
+          ...station,
+          lineID: line.lineID,
+        })
+      }
+    }
+  }
+
+  return result.length !== 0 ? result : null
+}
