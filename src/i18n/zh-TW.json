@@ -53,7 +53,7 @@
     "reupload_photo": "重新上傳照片"
   },
   "RouteMapPage": {
-    "search_placeholder": "點擊地圖上的車站或在此打字搜尋",
+    "search_placeholder": "點擊地圖上的「台北車站」或在此打字搜尋",
     "train_status": "進站狀態",
     "first_and_last_train": "首末班車資訊",
     "ubike_stations": "Ubike 站點"

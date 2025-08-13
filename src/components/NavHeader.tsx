@@ -11,7 +11,7 @@ export function NavHeader({ title }: NavHeaderProps) {
   const router = useTransitionRouter()
 
   return (
-    <div className="relative flex bg-white p-5">
+    <div className="h-nav-header relative flex bg-white p-5">
       <button className="size-[21px]" type="button" onClick={() => router.back()}>
         <Image src={ArrowLeftIcon} width={21} height={21} alt="回前頁" />
       </button>

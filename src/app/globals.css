@@ -4,6 +4,8 @@
 @theme {
   --spacing-app: 480px;
   --spacing-navbar: 76px;
+  --height-nav-header: 60px;
+  --height-drawer: 220px;
 
   --color-primary-blue: #0197bc; /* 捷運藍 */
   --color-primary-green: #4bb748; /* 捷運綠 */

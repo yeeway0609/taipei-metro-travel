@@ -9,6 +9,7 @@ import { StationMapButton } from '@/components/StationMapButton'
 import { getStationInfosByName } from '@/lib/StationOfLineData'
 import metroLinesData from '@/lib/MetroLineData'
 import { Locale } from '@/lib/types'
+import { Map } from './Map'
 
 export default function RouteMapPage() {
   const locale = useLocale() as Locale
@@ -25,8 +26,10 @@ export default function RouteMapPage() {
   }, [currentStationName])
 
   return (
-    <div className="pb-navbar min-h-dvh bg-[#F7F7F7]">
+    <div className="flex min-h-dvh flex-col bg-[#F7F7F7]">
       <NavHeader title={tCommon('page/route_map')} />
+
+      <Map currentStation={currentStationName} setCurrentStation={setCurrentStationName} />
 
       <ResponsiveDrawer>
         {!currentStationName && (
@@ -77,9 +80,12 @@ export default function RouteMapPage() {
                 <h3 className="text-sm">{stationInfos[0].stationName[locale]}</h3>
               </div>
             </section>
+
             <TitleItem title={tRouteMap('train_status')} />
+
             <TitleItem title={tCommon('page/station_map')} />
             <StationMapButton className="mx-auto w-full max-w-60" stationName={currentStationName} />
+
             <TitleItem title={tRouteMap('first_and_last_train')} />
             <TitleItem title={tRouteMap('ubike_stations')} />
           </>
