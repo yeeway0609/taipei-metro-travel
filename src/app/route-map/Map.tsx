@@ -1,7 +1,9 @@
 'use client'
+import { useState } from 'react'
 import Image from 'next/image'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import clsx from 'clsx'
+import { useLocale, useTranslations } from 'next-intl'
 
 const stationOrigin = {
   x: '40.55%',
@@ -11,19 +13,65 @@ const stationOrigin = {
 const mapStationData = [
   {
     name: '西門',
-    time: 2,
-    price: 20,
+    travel_time: 2,
+    regular_ticket: 20,
+    concession_ticket: 8,
     x: -30.3,
     y: 16.8,
   },
   {
     name: '善導寺',
-    time: 2,
-    price: 20,
+    travel_time: 2,
+    regular_ticket: 20,
+    concession_ticket: 8,
     x: 19.5,
     y: 0,
   },
+  {
+    name: '中山',
+    travel_time: 2,
+    regular_ticket: 20,
+    concession_ticket: 8,
+    x: 0,
+    y: -35,
+  },
+  {
+    name: '台大醫院',
+    travel_time: 2,
+    regular_ticket: 20,
+    concession_ticket: 8,
+    x: 0,
+    y: 18.5,
+  },
+  {
+    name: '北門',
+    travel_time: 6,
+    regular_ticket: 20,
+    concession_ticket: 8,
+    x: -30.3,
+    y: -12,
+  },
+  {
+    name: '小南門',
+    travel_time: 6,
+    regular_ticket: 20,
+    concession_ticket: 8,
+    x: -25,
+    y: 36,
+  },
+  {
+    name: '中正紀念堂',
+    travel_time: 2,
+    regular_ticket: 20,
+    concession_ticket: 8,
+    x: 0,
+    y: 38,
+  },
 ]
+
+type DisplayMode = 'travel_time' | 'regular_ticket' | 'concession_ticket'
+
+const displayModes: DisplayMode[] = ['travel_time', 'regular_ticket', 'concession_ticket']
 
 interface MapProps {
   currentStation: string | null
@@ -31,19 +79,39 @@ interface MapProps {
 }
 
 export function Map({ currentStation, setCurrentStation }: MapProps) {
+  const locale = useLocale()
+  const t = useTranslations('RouteMapPage')
+  const [infoDisplayMode, setInfoDisplayMode] = useState<DisplayMode>(displayModes[0])
+
   return (
     <div className="relative overflow-clip">
       <div className="absolute bottom-5 left-5 z-30 flex flex-col gap-3">
-        <button className="text-title-bold rounded-md bg-white px-2.5 py-1 shadow-lg active:bg-gray-100">時間</button>
-        <button className="text-title-bold rounded-md bg-white px-2.5 py-1 shadow-lg active:bg-gray-100">票價</button>
+        {displayModes.map((mode) => (
+          <button
+            key={mode}
+            className={clsx(
+              'text-body-bold rounded-md border border-gray-200 px-2.5 py-1 shadow-lg active:bg-gray-100',
+              infoDisplayMode === mode ? 'bg-gradient-primary text-white' : 'bg-white text-gray-600'
+            )}
+            onClick={() => setInfoDisplayMode(mode)}
+          >
+            {t(mode)}
+          </button>
+        ))}
       </div>
 
-      <TransformWrapper initialScale={2.5} minScale={0.5} maxScale={5} centerOnInit>
+      <TransformWrapper initialScale={2.5} minScale={0.5} maxScale={5} centerOnInit centerZoomedOut>
         {({ ...rest }) => (
           <TransformComponent>
-            <div className="flex h-dvh max-h-[calc(100dvh-var(--height-nav-header)-var(--height-drawer))] items-center justify-center">
-              <div className="relative aspect-[4200/5500] w-[500px] min-w-[500px]">
-                <Image className="size-full" src="/route-map-zhTW.jpg" alt="Map" width={4200} height={5500} />
+            <div className="flex h-dvh max-h-[calc(100dvh-var(--height-nav-header)-var(--height-drawer))] items-center justify-center pb-24">
+              <div className="relative mx-auto aspect-[4200/5500] w-[500px] min-w-[500px]">
+                <Image
+                  className="size-full"
+                  src={locale === 'zh-TW' ? '/route-map-zhTW.jpg' : '/route-map-en.jpg'}
+                  alt="Map"
+                  width={4200}
+                  height={5500}
+                />
                 <div
                   className="absolute flex items-center justify-center"
                   style={{
@@ -52,24 +120,25 @@ export function Map({ currentStation, setCurrentStation }: MapProps) {
                   }}
                 >
                   <button
-                    className={clsx('absolute size-2 rounded-full', currentStation === '台北車站' && 'bg-[#0197BC]')}
+                    className={clsx('absolute size-2 rounded-full', currentStation && 'bg-[#0197BC]')}
                     onClick={() => setCurrentStation('台北車站')}
                   />
-                  {currentStation === '台北車站' && (
+                  {currentStation && (
                     <div className="pointer-events-none absolute size-10 rounded-full bg-[#83DEFF]/40" />
                   )}
 
-                  {mapStationData.map((station) => (
-                    <div
-                      key={station.name}
-                      className="absolute flex size-2 origin-center items-center justify-center rounded-full text-[6px] font-semibold"
-                      style={{
-                        transform: `translate(${station.x}px, ${station.y}px)`,
-                      }}
-                    >
-                      {station.time}
-                    </div>
-                  ))}
+                  {currentStation &&
+                    mapStationData.map((station) => (
+                      <div
+                        key={station.name}
+                        className="absolute flex size-2 origin-center items-center justify-center rounded-full text-[6px] font-semibold"
+                        style={{
+                          transform: `translate(${station.x}px, ${station.y}px)`,
+                        }}
+                      >
+                        {station[infoDisplayMode]}
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>

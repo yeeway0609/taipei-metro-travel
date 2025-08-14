@@ -56,7 +56,10 @@
     "search_placeholder": "點擊地圖上的「台北車站」或在此打字搜尋",
     "train_status": "進站狀態",
     "first_and_last_train": "首末班車資訊",
-    "ubike_stations": "Ubike 站點"
+    "ubike_stations": "Ubike 站點",
+    "travel_time": "行車時間",
+    "regular_ticket": "全票",
+    "concession_ticket": "優待票"
   },
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",
