@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { NavHeader } from '@/components/NavHeader'
 import { getStationInfosByName } from '@/lib/StationOfLineData'
+import { ThreeDMap } from './ThreeDMap'
 
 export default async function StationMapPage({ params }: { params: Promise<{ stationName: string }> }) {
   const tCommon = await getTranslations('Common')
@@ -19,7 +20,7 @@ export default async function StationMapPage({ params }: { params: Promise<{ sta
     <div className="pb-navbar min-h-dvh">
       <NavHeader title={tCommon('page/station_map')} />
 
-      <h1>{stationName}</h1>
+      <ThreeDMap />
     </div>
   )
 }
