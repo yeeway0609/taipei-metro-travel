@@ -1,9 +1,11 @@
 'use client'
 import { useState } from 'react'
+import { Link } from 'next-view-transitions'
 import Image from 'next/image'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import clsx from 'clsx'
 import { useLocale, useTranslations } from 'next-intl'
+import { Icons } from '@/assets/svg-icons'
 
 const stationOrigin = {
   x: '40.55%',
@@ -80,7 +82,8 @@ interface MapProps {
 
 export function Map({ currentStation, setCurrentStation }: MapProps) {
   const locale = useLocale()
-  const t = useTranslations('RouteMapPage')
+  const tCommon = useTranslations('Common')
+  const tRouteMap = useTranslations('RouteMapPage')
   const [infoDisplayMode, setInfoDisplayMode] = useState<DisplayMode>(displayModes[0])
 
   return (
@@ -95,10 +98,18 @@ export function Map({ currentStation, setCurrentStation }: MapProps) {
             )}
             onClick={() => setInfoDisplayMode(mode)}
           >
-            {t(mode)}
+            {tRouteMap(mode)}
           </button>
         ))}
       </div>
+
+      <Link
+        className="text-body-bold bg-gradient-primary absolute right-5 bottom-5 z-30 flex flex-col items-center rounded-lg p-2 text-white"
+        href="/route-map/route-planning"
+      >
+        <Icons.RoutPlanning_Gray className="mb-1 size-6" />
+        <span>{tCommon('page/route_planning')}</span>
+      </Link>
 
       <TransformWrapper initialScale={2.5} minScale={0.5} maxScale={5} centerOnInit centerZoomedOut>
         {({ ...rest }) => (

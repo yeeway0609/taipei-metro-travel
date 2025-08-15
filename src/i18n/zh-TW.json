@@ -59,7 +59,9 @@
     "ubike_stations": "Ubike 站點",
     "travel_time": "行車時間",
     "regular_ticket": "全票",
-    "concession_ticket": "優待票"
+    "concession_ticket": "優待票",
+    "planning_departure": "輸入出發站",
+    "planning_destination": "輸入目的地站"
   },
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",

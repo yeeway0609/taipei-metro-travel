@@ -387,4 +387,110 @@ export const Icons = {
       />
     </svg>
   ),
+  LocationMarker: (props: SVGProps<SVGSVGElement>) => (
+    <svg width={21} height={21} viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M5.6 4.165a6.93 6.93 0 019.8 9.8l-3.663 3.663a1.75 1.75 0 01-2.474 0L5.6 13.965a6.93 6.93 0 010-9.8z"
+        fill="url(#paint0_linear_40_1872)"
+      />
+      <path
+        d="M10.5 11.69a2.625 2.625 0 100-5.25 2.625 2.625 0 000 5.25z"
+        fill="#0197BC"
+        stroke="#fff"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_40_1872"
+          x1={3.57056}
+          y1={10.1624}
+          x2={17.3806}
+          y2={10.1624}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0197BC" />
+          <stop offset={1} stopColor="#4BB748" />
+        </linearGradient>
+      </defs>
+    </svg>
+  ),
+  Transfer: (props: SVGProps<SVGSVGElement>) => (
+    <svg width={20} height={20} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path
+        d="M9.167 5.833L5.833 2.5 2.5 5.833"
+        stroke="url(#paint0_linear_40_1871)"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.833 2.5v10"
+        stroke="url(#paint1_linear_40_1871)"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17.5 14.167L14.167 17.5l-3.334-3.333"
+        stroke="url(#paint2_linear_40_1871)"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14.167 7.5v10"
+        stroke="url(#paint3_linear_40_1871)"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_40_1871"
+          x1={2.5}
+          y1={4.16683}
+          x2={9.16667}
+          y2={4.16683}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0197BC" />
+          <stop offset={1} stopColor="#4BB748" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_40_1871"
+          x1={1.33325}
+          y1={7.5}
+          x2={11.3333}
+          y2={7.5}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0197BC" />
+          <stop offset={1} stopColor="#4BB748" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_40_1871"
+          x1={10.8333}
+          y1={15.8333}
+          x2={17.4999}
+          y2={15.8333}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0197BC" />
+          <stop offset={1} stopColor="#4BB748" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_40_1871"
+          x1={9.66675}
+          y1={12.5}
+          x2={19.6667}
+          y2={12.5}
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0197BC" />
+          <stop offset={1} stopColor="#4BB748" />
+        </linearGradient>
+      </defs>
+    </svg>
+  ),
 }
