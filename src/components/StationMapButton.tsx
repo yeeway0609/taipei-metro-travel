@@ -1,7 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import clsx from 'clsx'
-import mapIcon from '@/assets/map.svg'
+import { Icons } from '@/assets/svg-icons'
 import { useTranslations } from 'next-intl'
 
 interface StationMapButtonProps {
@@ -20,7 +19,7 @@ export function StationMapButton({ stationName, className }: StationMapButtonPro
       )}
       href={`/route-map/station-map/${stationName}`}
     >
-      <Image src={mapIcon} alt="Map Icon" width={24} height={24} />
+      <Icons.Map className="size-6" />
       <span className="text-title">{t('page/station_map')}</span>
     </Link>
   )
