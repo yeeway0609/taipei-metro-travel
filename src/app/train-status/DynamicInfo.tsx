@@ -1,11 +1,10 @@
 'use client'
 import { useState, useMemo } from 'react'
-import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { Icons } from '@/assets/icons'
 import { TrackInfoItem } from '@/components/TrackInfoItem'
-import chevronRightIcon from '@/assets/chevron-right.svg'
 import metroLinesData from '@/lib/MetroLineData'
 import stationOfLineData from '@/lib/StationOfLineData'
 import type { MetroLineID } from '@/lib/types'
@@ -94,7 +93,7 @@ export function DynamicInfo() {
               {currentLine.id}
             </div>
             <span className="text-body ml-2">{currentLine.name[locale]}</span>
-            <Image className="mt-0.5 ml-auto size-6 rotate-90" src={chevronRightIcon} alt="" />
+            <Icons.ChevronRight className="mt-0.5 ml-auto size-6 rotate-90" />
           </DropdownMenuTrigger>
 
           <DropdownMenuContent className="min-w-none">
