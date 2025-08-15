@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 import logoImg from '@/assets/logo.png'
 import { showNotImplementedToast } from '@/lib/utils'
 import { AdCarousel } from './AdCarousel'

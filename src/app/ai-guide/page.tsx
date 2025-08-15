@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { Ring2 } from 'ldrs/react'
 import 'ldrs/react/Ring2.css'
 import { NavHeader } from '@/components/NavHeader'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 import { showNotImplementedToast } from '@/lib/utils'
 import { AiResult } from './AiResult'
 

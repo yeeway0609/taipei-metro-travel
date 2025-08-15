@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 import { NavHeader } from '@/components/NavHeader'
 import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui/drawer'
 import { showNotImplementedToast } from '@/lib/utils'

@@ -3,7 +3,7 @@ import { Link } from 'next-view-transitions'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { clsx } from 'clsx'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 
 const items = [
   { name: 'page/route_map', path: '/route-map', icon: Icons.RouteMap },

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 import { Link } from 'next-view-transitions'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 
 const features = [
   {

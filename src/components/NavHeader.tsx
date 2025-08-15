@@ -1,6 +1,6 @@
 'use client'
 import { useTransitionRouter } from 'next-view-transitions'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 
 interface NavHeaderProps {
   title: string

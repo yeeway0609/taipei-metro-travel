@@ -1,7 +1,7 @@
 'use client'
 import { useMemo, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 import { NavHeader } from '@/components/NavHeader'
 import { ResponsiveDrawer } from '@/components/ResponsiveDrawer'
 import { StationIdBadge } from '@/components/StationIdBadge'
