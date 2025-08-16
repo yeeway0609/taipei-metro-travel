@@ -1,10 +1,9 @@
 'use client'
 import { useState } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { Icons } from '@/assets/svg-icons'
 import { NavHeader } from '@/components/NavHeader'
 import { Drawer, DrawerContent, DrawerTitle } from '@/components/ui/drawer'
-import chevronIcon from '@/assets/chevron-right.svg'
 import { showNotImplementedToast } from '@/lib/utils'
 import { setUserLocale } from '@/i18n/locale'
 import type { Locale } from '@/lib/types'
@@ -82,7 +81,8 @@ function FeatureItem({ title, onClick }: { title: string; onClick?: () => void }
       onClick={onClick}
     >
       <span className="text-title">{title}</span>
-      <Image className="size-6" src={chevronIcon} width={24} height={24} alt="" />
+      {/* <Image className="size-6" src={chevronIcon} width={24} height={24} alt="" /> */}
+      <Icons.ChevronRight className="size-6" />
     </div>
   )
 }

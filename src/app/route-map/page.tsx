@@ -1,11 +1,12 @@
 'use client'
 import { useMemo, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
-import { Icons } from '@/assets/icons'
+import { Icons } from '@/assets/svg-icons'
 import { NavHeader } from '@/components/NavHeader'
 import { ResponsiveDrawer } from '@/components/ResponsiveDrawer'
 import { StationIdBadge } from '@/components/StationIdBadge'
 import { StationMapButton } from '@/components/StationMapButton'
+import { TrackInfoItem } from '@/components/TrackInfoItem'
 import { getStationInfosByName } from '@/lib/StationOfLineData'
 import metroLinesData from '@/lib/MetroLineData'
 import { Locale } from '@/lib/types'
@@ -82,6 +83,24 @@ export default function RouteMapPage() {
             </section>
 
             <TitleItem title={tRouteMap('train_status')} />
+            <div className="space-y-4">
+              <TrackInfoItem
+                lineID="R"
+                lineName="淡水信義線"
+                stationID="R02"
+                stationName="象山"
+                countDown="XX:XX"
+                showDirectionText
+              />
+              <TrackInfoItem
+                lineID="R"
+                lineName="淡水信義線"
+                stationID="R22A"
+                stationName="新北投"
+                countDown="XX:XX"
+                showDirectionText
+              />
+            </div>
 
             <TitleItem title={tCommon('page/station_map')} />
             <StationMapButton className="mx-auto w-full max-w-60" stationName={currentStationName} />

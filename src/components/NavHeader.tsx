@@ -1,7 +1,6 @@
 'use client'
 import { useTransitionRouter } from 'next-view-transitions'
-import Image from 'next/image'
-import ArrowLeftIcon from '@/assets/arrow-left.svg'
+import { Icons } from '@/assets/svg-icons'
 
 interface NavHeaderProps {
   title: string
@@ -13,7 +12,7 @@ export function NavHeader({ title }: NavHeaderProps) {
   return (
     <div className="h-nav-header relative flex bg-white p-5">
       <button className="size-[21px]" type="button" onClick={() => router.back()}>
-        <Image src={ArrowLeftIcon} width={21} height={21} alt="回前頁" />
+        <Icons.ArrowLeft className="size-[21px]" />
       </button>
 
       <h1 className="text-title absolute top-5 left-1/2 -translate-x-1/2 text-gray-900">{title}</h1>

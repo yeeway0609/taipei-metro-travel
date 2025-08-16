@@ -1,26 +1,27 @@
 import { useTranslations } from 'next-intl'
-import markerIcon from '@/assets/home/marker.svg'
-import routeIcon from '@/assets/home/route.svg'
-import aiIcon from '@/assets/home/ai.svg'
-import giftIcon from '@/assets/home/gift.svg'
-import Image from 'next/image'
+import { Link } from 'next-view-transitions'
+import { Icons } from '@/assets/svg-icons'
 
 const features = [
   {
     name: 'travel_time_fare',
-    icon: markerIcon,
+    icon: <Icons.Marker className="size-10" />,
+    link: '/route-map',
   },
   {
     name: 'route_plan',
-    icon: routeIcon,
+    icon: <Icons.RoutPlanning_Gradient className="size-10" />,
+    link: '/route-map/route-planning',
   },
   {
     name: 'ai_guide',
-    icon: aiIcon,
+    icon: <Icons.AiFeature className="size-10" />,
+    link: '/ai-guide',
   },
   {
     name: 'go_promotion',
-    icon: giftIcon,
+    icon: <Icons.Gift className="size-10" />,
+    link: '',
   },
 ]
 
@@ -29,11 +30,11 @@ export function FavoriteFeature() {
 
   return (
     <div className="flex justify-around rounded-2xl bg-gray-100 px-3 py-4">
-      {features.map(({ name, icon }) => (
-        <div key={name} className="flex flex-1 flex-col items-center">
-          <Image className="size-10" src={icon} alt={t(`features/${name}`)} />
+      {features.map(({ name, icon, link }) => (
+        <Link key={name} href={link} className="flex flex-1 flex-col items-center">
+          {icon}
           <span className="text-caption-bold mt-2 text-center text-gray-900">{t(`features/${name}`)}</span>
-        </div>
+        </Link>
       ))}
     </div>
   )

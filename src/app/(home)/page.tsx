@@ -1,11 +1,8 @@
 'use client'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { Icons } from '@/assets/svg-icons'
 import logoImg from '@/assets/logo.png'
-import bellIcon from '@/assets/home/bell.svg'
-import soundIcon from '@/assets/home/sound.svg'
-import couponIcon from '@/assets/home/coupon.svg'
-import chevronRightIcon from '@/assets/chevron-right.svg'
 import { showNotImplementedToast } from '@/lib/utils'
 import { AdCarousel } from './AdCarousel'
 import { FavoriteFeature } from './FavoriteFeature'
@@ -19,13 +16,13 @@ export default function HomePage() {
       <div className="flex items-center justify-between px-6 py-5">
         <Image src={logoImg} alt="Logo" width={130} height={21} />
         <button type="button" onClick={showNotImplementedToast}>
-          <Image src={bellIcon} alt="" width={23} height={23} />
+          <Icons.Bell className="size-[23px]" />
         </button>
       </div>
 
       {/* 廣播跑馬燈 */}
       <div className="flex w-full items-center pl-6">
-        <Image src={soundIcon} alt="" width={24} height={24} />
+        <Icons.Sound className="size-6" />
         <div className="ml-2 w-full overflow-hidden">
           <div className="animate-marquee text-body min-w-fit whitespace-nowrap">{t('broadcast_message')}</div>
         </div>
@@ -39,9 +36,9 @@ export default function HomePage() {
       {/* 我的票卡 */}
       <section className="mx-6 mt-2.5 flex h-24 justify-between text-gray-900">
         <div className="from-primary-blue/10 to-primary-green/10 relative w-full rounded-xl bg-gradient-to-r px-3 py-2.5">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             <span className="text-caption">{t('my_card/title')}</span>
-            <Image src={chevronRightIcon} alt="" width={15} height={15} />
+            <Icons.ChevronRight className="size-[15px]" />
           </div>
           <p className="text-body mt-1">Easy card 0000008642</p>
 
@@ -65,7 +62,7 @@ export default function HomePage() {
           onClick={showNotImplementedToast}
         >
           <div className="border-primary-blue absolute top-2.5 left-0 h-[76px] -translate-x-1/2 border-l border-dashed" />
-          <Image src={couponIcon} alt="" width={34} height={34} />
+          <Icons.Coupon className="size-[34px]" />
           <span className="text-body-bold mt-0.5">{t('my_card/coupons')}</span>
         </div>
       </section>

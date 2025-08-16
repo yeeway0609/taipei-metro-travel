@@ -57,7 +57,12 @@
     "search_placeholder": "Click a station on the map or type to search",
     "train_status": "Train Status",
     "first_and_last_train": "First and Last Train Info",
-    "ubike_stations": "Ubike Stations"
+    "ubike_stations": "Ubike Stations",
+    "travel_time": "Travel Time",
+    "regular_ticket": "Regular Ticket",
+    "concession_ticket": "Concession Ticket",
+    "planning_departure": "Enter departure station",
+    "planning_destination": "Enter destination station"
   },
   "TrainStatusPage": {
     "dynamic_info": "Dynamic Info",

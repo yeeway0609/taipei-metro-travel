@@ -20,7 +20,7 @@ export function ResponsiveDrawer({ children }: { children: React.ReactNode }) {
       setActiveSnapPoint={setSnap}
     >
       <Drawer.Portal>
-        <Drawer.Content className="border-b-none fixed right-0 bottom-0 left-0 flex h-full min-h-[240px] flex-col rounded-t-xl border border-gray-200 bg-white shadow-[0_0_15px_-5px_rgba(0,0,0,0.25)]">
+        <Drawer.Content className="border-b-none fixed right-0 bottom-0 left-0 z-40 flex h-full min-h-[240px] flex-col rounded-t-xl border border-gray-200 bg-white shadow-[0_0_15px_-5px_rgba(0,0,0,0.25)]">
           <Drawer.Handle className="my-2" style={{ width: '80px' }} />
 
           <div
