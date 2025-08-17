@@ -81,7 +81,6 @@ function FeatureItem({ title, onClick }: { title: string; onClick?: () => void }
       onClick={onClick}
     >
       <span className="text-title">{title}</span>
-      {/* <Image className="size-6" src={chevronIcon} width={24} height={24} alt="" /> */}
       <Icons.ChevronRight className="size-6" />
     </div>
   )

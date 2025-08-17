@@ -3,9 +3,13 @@ import { useState } from 'react'
 import { clsx } from 'clsx'
 import { Drawer } from 'vaul'
 
-const snapPoints = ['220px', 0.8]
+interface ResponsiveDrawerProps {
+  children: React.ReactNode
+  maxHeightRatio?: number
+}
 
-export function ResponsiveDrawer({ children }: { children: React.ReactNode }) {
+export function ResponsiveDrawer({ children, maxHeightRatio = 0.8 }: ResponsiveDrawerProps) {
+  const snapPoints = ['220px', maxHeightRatio]
   const [snap, setSnap] = useState<number | string | null>(snapPoints[0])
 
   return (
