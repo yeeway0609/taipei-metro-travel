@@ -48,7 +48,10 @@ export default function StationMapPage() {
           </section>
 
           <section className="flex gap-2 pt-3">
-            <Select value={currentFacilityType as string} onValueChange={(value) => setCurrentFacilityType(value as FacilityType)}>
+            <Select
+              value={currentFacilityType as string}
+              onValueChange={(value) => setCurrentFacilityType(value as FacilityType)}
+            >
               <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder={tRouteMap('facility_select_placeholder')} />
               </SelectTrigger>
