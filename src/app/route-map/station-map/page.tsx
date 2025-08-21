@@ -1,17 +1,21 @@
+'use client'
+import { useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { NavHeader } from '@/components/NavHeader'
 import { ResponsiveDrawer } from '@/components/ResponsiveDrawer'
 import { StationIdBadge } from '@/components/StationIdBadge'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import metroLinesData from '@/lib/MetroLineData'
 import { getStationInfosByName } from '@/lib/StationOfLineData'
 import { Locale } from '@/lib/types'
-import { Icons } from '@/assets/svg-icons'
 import { ThreeDMap } from './ThreeDMap'
+import { FacilityType, facilityTypes } from './facilitiesData'
 
 export default function StationMapPage() {
   const locale = useLocale() as Locale
   const tCommon = useTranslations('Common')
   const tRouteMap = useTranslations('RouteMapPage')
+  const [currentFacilityType, setCurrentFacilityType] = useState<FacilityType | ''>('')
 
   const stationName = '台北車站'
   const stationInfos = getStationInfosByName(stationName)
@@ -21,7 +25,7 @@ export default function StationMapPage() {
       <div className="pb-navbar min-h-dvh">
         <NavHeader title={tCommon('page/station_map')} />
 
-        <ThreeDMap />
+        <ThreeDMap currentFacilityType={currentFacilityType} setCurrentFacilityType={setCurrentFacilityType} />
 
         <ResponsiveDrawer maxHeightRatio={0.5}>
           <section className="flex items-center gap-3.5">
@@ -43,9 +47,19 @@ export default function StationMapPage() {
             </div>
           </section>
 
-          <section>
-            <Icons.ChevronRight className="size-6" />
-            {/* TODO: 旋轉按鈕 */}
+          <section className="flex gap-2 pt-3">
+            <Select value={currentFacilityType as string} onValueChange={(value) => setCurrentFacilityType(value as FacilityType)}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder={tRouteMap('facility_select_placeholder')} />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(facilityTypes).map(([key, value]) => (
+                  <SelectItem key={key} value={key}>
+                    {value[locale]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </section>
         </ResponsiveDrawer>
       </div>
