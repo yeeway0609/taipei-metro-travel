@@ -63,8 +63,8 @@
     "concession_ticket": "Concession Ticket",
     "planning_departure": "Enter departure station",
     "planning_destination": "Enter destination station",
-    "facility_select_placeholder": "Select facility"
-
+    "facility_select_placeholder": "Select facility",
+    "facility_left": "XX Left"
   },
   "TrainStatusPage": {
     "dynamic_info": "Dynamic Info",

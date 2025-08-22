@@ -9,7 +9,7 @@ import metroLinesData from '@/lib/MetroLineData'
 import { getStationInfosByName } from '@/lib/StationOfLineData'
 import { Locale } from '@/lib/types'
 import { ThreeDMap } from './ThreeDMap'
-import { FacilityType, facilityTypes } from './facilitiesData'
+import { FacilityType, facilityTypes, facilitiesData } from './facilitiesData'
 
 export default function StationMapPage() {
   const locale = useLocale() as Locale
@@ -28,7 +28,7 @@ export default function StationMapPage() {
         <ThreeDMap currentFacilityType={currentFacilityType} setCurrentFacilityType={setCurrentFacilityType} />
 
         <ResponsiveDrawer maxHeightRatio={0.5}>
-          <section className="flex items-center gap-3.5">
+          <section className="mb-3 flex items-center gap-3.5">
             <div className="flex gap-1.5">
               {stationInfos.map((info) => (
                 <StationIdBadge key={info.stationID} lineID={info.lineID} stationID={info.stationID} />
@@ -47,23 +47,35 @@ export default function StationMapPage() {
             </div>
           </section>
 
-          <section className="flex gap-2 pt-3">
-            <Select
-              value={currentFacilityType as string}
-              onValueChange={(value) => setCurrentFacilityType(value as FacilityType)}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder={tRouteMap('facility_select_placeholder')} />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(facilityTypes).map(([key, value]) => (
-                  <SelectItem key={key} value={key}>
-                    {value[locale]}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </section>
+          <Select
+            value={currentFacilityType as string}
+            onValueChange={(value) => setCurrentFacilityType(value as FacilityType)}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder={tRouteMap('facility_select_placeholder')} />
+            </SelectTrigger>
+            <SelectContent>
+              {Object.entries(facilityTypes).map(([key, value]) => (
+                <SelectItem key={key} value={key}>
+                  {value[locale]}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <div className="mt-3 flex flex-col gap-3 px-2">
+            {facilitiesData
+              .filter((facility) => facility.type === currentFacilityType)
+              .map((facility) => (
+                <div key={facility.uid} className="flex items-center">
+                  <div className="text-title-bold flex h-[30px] w-24 shrink-0 items-center justify-center rounded-[100px] border-[1.5px] border-[#727272] pb-px text-[#727272]">
+                    {tRouteMap('facility_left')}
+                  </div>
+                  <p className="text-title ml-3">{`${facility.floor.toUpperCase()}F`}</p>
+                  <p className="text-title-bold ml-3">{facility.name}</p>
+                </div>
+              ))}
+          </div>
         </ResponsiveDrawer>
       </div>
     )

@@ -76,6 +76,11 @@ export function ThreeDMap({ currentFacilityType, setCurrentFacilityType }: Three
 
         <Suspense fallback={null}>
           <AllFloorModel currentFloor={currentFloor} currentFacilityTypeNames={currentFacilityTypeNames} />
+          <Html transform position={[0, 0, 0]} rotation={[0, Math.PI / 4, 0]}>
+            <div className="bg-primary-blue/20 flex aspect-[11/12] w-9 items-center justify-center rounded-full border-[0.3] border-[#95BCE1]/20">
+              <div className="bg-primary-blue aspect-[11/12] w-3.5 rounded-full border-[1.5px] border-white" />
+            </div>
+          </Html>
 
           {facilitiesData.map((facility) => {
             const IconComponent = MapIcons[facility.type]

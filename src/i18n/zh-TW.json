@@ -62,7 +62,8 @@
     "concession_ticket": "優待票",
     "planning_departure": "輸入出發站",
     "planning_destination": "輸入目的地站",
-    "facility_select_placeholder": "請選擇設施"
+    "facility_select_placeholder": "請選擇設施",
+    "facility_left": "還剩 X 個"
   },
   "TrainStatusPage": {
     "dynamic_info": "動態資訊",
